@@ -1,15 +1,20 @@
 //
-//  FreezerTableViewController.swift
+//  SettingTableViewController.swift
 //  SmartStatis
 //
-//  Created by wu yun en on 2019/4/2.
+//  Created by Jerry Tang on 2019/4/4.
 //  Copyright © 2019 GenX Leader. All rights reserved.
 //
-
 import UIKit
 protocol FreezerDelegate {
     func updateFreezer(food:[Food])}
+/*
+ This class is to create the table view for pantry.
+ */
 class FreezerTableViewController: UITableViewController,AddFoodDelegate {
+    /*
+     This function is to add a new food into the application.
+     */
     func addFood(updated: Bool) {
         if updated {
             let foodURL = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/food/getfoodbyuidandlocation?id=" + String(uid!) + "&lid=3"
@@ -42,7 +47,6 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
                 }.resume()
         }
     }
-    
     var uid: Int?
     var freezerDelegate: FreezerDelegate?
     var freezerFood = [Food]()
@@ -51,20 +55,18 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
         freezerFood = freezerFood.sorted(by:{ $0.expire! < $1.expire! })
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"Add-30px"), style: .plain, target: self, action: #selector(addFoodButton))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 81/255, green: 142/255, blue: 247/255, alpha: 1.0)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    // MARK: - Table view data source
-    
+    /*
+        This method is to identify the number of sections in the table view.
+     */
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
+    /*
+        This method is to set the number of rows in each section.
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -75,6 +77,9 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
         }
     }
     
+    /*
+        This method is to set the layout of cells.
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalItemCell", for: indexPath) as! TotalItemCell
@@ -83,7 +88,6 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
             var expire = 0
             if freezerFood.count > 0 {
                 for i in 0...freezerFood.count-1 {
-                    //let expiry = Calendar.current.date(byAdding:.day,value: foodItem["expiry days"] as! Int,to: Date())
                     if freezerFood[i].expire! < Date() {
                         expire = expire + 1
                     }
@@ -141,6 +145,9 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
         }
     }
     
+    /*
+        This methods is to set the height of cells in each section.
+     */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         if indexPath.section == 0 {
@@ -148,21 +155,19 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
         }
         return 100.0
     }
-    // Override to support conditional editing of the table view.
+  
+    /*
+        This method is to determine if the cells are editable.
+     */
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
     
+    /*
+        This method is to set edit button on the side of the cells.
+     */
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        // action one
-//        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-//            print("Edit tapped")
-//        })
-//        editAction.backgroundColor = UIColor(red: 22/255, green: 135/255, blue: 255/255, alpha: 1.0)
-        
-        // action two
         let deleteAction = UITableViewRowAction(style: .default, title: "Bin", handler: { (action, indexPath) in
             self.deleteFood(foodId: self.freezerFood[indexPath.row].foodId)
             self.freezerFood.remove(at: indexPath.row)
@@ -175,6 +180,9 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
         return [deleteAction]
     }
     
+    /*
+        This method is to set actions before a launch is launched.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddFoodSegue" {
             let controller: FoodDetailController = segue.destination as! FoodDetailController
@@ -184,6 +192,9 @@ class FreezerTableViewController: UITableViewController,AddFoodDelegate {
         }
     }
     
+    /*
+        This method is to add new food and launch the segue.
+     */
     @objc func addFoodButton() {
         self.performSegue(withIdentifier: "AddFoodSegue", sender: nil)
     }

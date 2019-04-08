@@ -9,6 +9,9 @@
 import UIKit
 protocol AddFoodDelegate {
     func addFood(updated:Bool) }
+/*
+    This class is to layout the view for food detail.
+ */
 class FoodDetailController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate {
     var addFoodDelegate: AddFoodDelegate?
     @IBOutlet weak var addButton: UIButton!
@@ -60,20 +63,32 @@ class FoodDetailController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     var categoryId : Int?
     let datePicker = UIDatePicker()
     var uid: Int?
+    /*
+        This method is to layout picker view.
+     */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         categoryId = category[row]["cid"] as? Int
         
     }
+    /*
+        This method is to set the number of component in the picker view.
+    */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    /*
+        This method is the complete action for selecting date.
+     */
     @objc func done() {
         dateField.text = datePicker.date.toString(dateFormat: "MM-dd-yyyy")
         self.view.endEditing(true)
     }
     
+   /*
+        This method is to create date picker.
+     */
     func createDatePicker() {
         datePicker.datePickerMode = .date
         let toolBar = UIToolbar()
@@ -85,10 +100,16 @@ class FoodDetailController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         dateField.inputView = datePicker
     }
     
+    /*
+        The method layouts the pickview.
+     */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return (category.count)
     }
     
+    /*
+     The method layouts the pickview.
+     */
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if category.count != 0 {
             let titleString = category[row]["categoryname"] as? String
@@ -101,7 +122,6 @@ class FoodDetailController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     var food : [Food]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         createDatePicker()
         self.dateField.delegate = self
         addButton.layer.cornerRadius = 5
@@ -130,10 +150,11 @@ class FoodDetailController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
                 }
             }
             }.resume()
-
-        // Do any additional setup after loading the view.
     }
     
+    /*
+     The method add new food.
+     */
     func addFood(userId: Int, categoryId: Int, locationId: Int, foodName: String, start: String, expire: String, price: String) {
         guard let postUrl = URL(string: "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/food/addfood?uid=" + String(userId) + "&cid=" + String(categoryId) + "&lid=" + String(locationId) + "&name=" + foodName + "&start=" + start + "&price=" + price + "&expire=" + expire ) else { return}
         var postRequest = URLRequest(url: postUrl)
@@ -162,7 +183,9 @@ class FoodDetailController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     
 }
 
-
+/*
+    The extension helps managing dates.
+ */
 extension Date
 {
     func toString( dateFormat format  : String ) -> String

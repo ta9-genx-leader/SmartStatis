@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+    Food cell class.
+ */
 class FoodCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

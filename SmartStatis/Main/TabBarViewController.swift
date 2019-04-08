@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+    This class is the class managing the tab bar controllers.
+ */
 class TabBarViewController: UITabBarController {
 
     var currentUser: User?

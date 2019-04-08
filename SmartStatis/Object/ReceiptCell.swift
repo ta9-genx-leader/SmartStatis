@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+    Receipt cell class
+ */
 class ReceiptCell: UITableViewCell {
 
     @IBOutlet weak var priceLabel: UILabel!

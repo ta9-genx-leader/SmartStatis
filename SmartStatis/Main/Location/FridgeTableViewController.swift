@@ -9,7 +9,13 @@
 import UIKit
 protocol FridgeDelegate {
     func updateFridge(food:[Food])}
+/*
+ This class is to generate table view for fridege.
+ */
 class FridgeTableViewController: UITableViewController, AddFoodDelegate{
+    /*
+        This method is to add a new food into the database.
+     */
     func addFood(updated: Bool) {
         if updated {
             let foodURL = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/food/getfoodbyuidandlocation?id=" + String(uid!) + "&lid=2"
@@ -46,25 +52,24 @@ class FridgeTableViewController: UITableViewController, AddFoodDelegate{
     var fridgeDelegate: FridgeDelegate?
     var uid: Int?
     var fridgeFood = [Food]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fridgeFood = fridgeFood.sorted(by:{ $0.expire! < $1.expire! })
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"Add-30px"), style: .plain, target: self, action: #selector(addFoodButton))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 81/255, green: 142/255, blue: 247/255, alpha: 1.0)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
+    /*
+        This method is to identify the number of sections in the table view.
+     */
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
+    /*
+        Thie method is to determine the number of rows in each section.
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -75,6 +80,9 @@ class FridgeTableViewController: UITableViewController, AddFoodDelegate{
         }
     }
 
+    /*
+        This method is to layout the cells for the table view.
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalItemCell", for: indexPath) as! TotalItemCell
@@ -141,6 +149,9 @@ class FridgeTableViewController: UITableViewController, AddFoodDelegate{
         }
     }
     
+    /*
+        This method is to determine the height for trhe rows.
+     */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         if indexPath.section == 0 {
@@ -148,21 +159,19 @@ class FridgeTableViewController: UITableViewController, AddFoodDelegate{
         }
         return 100.0
     }
-    // Override to support conditional editing of the table view.
+    
+    /*
+        This method is to determine if the cells are editable.
+     */
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
     
+    /*
+        This method is to determine the edit button for the rows.
+     */
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-//        // action one
-//        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-//            print("Edit tapped")
-//        })
-//        editAction.backgroundColor = UIColor(red: 22/255, green: 135/255, blue: 255/255, alpha: 1.0)
-        
-        // action two
         let deleteAction = UITableViewRowAction(style: .default, title: "Bin", handler: { (action, indexPath) in
             self.deleteFood(foodId: self.fridgeFood[indexPath.row].foodId)
             self.fridgeFood.remove(at: indexPath.row)
@@ -175,10 +184,9 @@ class FridgeTableViewController: UITableViewController, AddFoodDelegate{
         return [deleteAction]
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-    
+    /*
+        This method is to set actions before the segue is launched.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddFoodSegue" {
             let controller: FoodDetailController = segue.destination as! FoodDetailController
@@ -188,11 +196,17 @@ class FridgeTableViewController: UITableViewController, AddFoodDelegate{
         }
     }
     
+    /*
+        The method is to add new food.
+    */
     @objc func addFoodButton() {
         self.performSegue(withIdentifier: "AddFoodSegue", sender: nil)
     }
 }
 
+/*
+    This extension is to create a HTTP delete request for the table view.
+ */
 extension UITableViewController{
     func deleteFood(foodId: Int?) {
         guard let foodURL = URL(string: "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/food/deletefoodbyid?id=" + String(foodId!)) else {return}

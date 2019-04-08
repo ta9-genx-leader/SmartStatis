@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+    Class for setting view.
+ */
 class SettingCell: UITableViewCell {
     @IBOutlet weak var settingLabel: UILabel!
     

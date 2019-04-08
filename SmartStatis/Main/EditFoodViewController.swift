@@ -9,6 +9,9 @@
 import UIKit
 protocol EditFoodDelegate {
     func editFood(food:Food) }
+/*
+    This class is to layout view for editting food.
+ */
 class EditFoodViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate {
     var editFoodDelegate: EditFoodDelegate?
     let datePicker = UIDatePicker()
@@ -66,7 +69,6 @@ class EditFoodViewController: UIViewController,UIPickerViewDelegate,UIPickerView
     var editFood: Food?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         categoryId = editFood?.categoryId
         createDatePicker()
         saveOutlet.layer.cornerRadius = 5
@@ -84,6 +86,9 @@ class EditFoodViewController: UIViewController,UIPickerViewDelegate,UIPickerView
         // Do any additional setup after loading the view.
     }
     
+    /*
+        The method is HTTP request for all categories.
+     */
     func downloadCategory() {
         let categoryURL = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/user/getallcategory"
         guard let url = URL(string: categoryURL) else { return}
@@ -105,11 +110,17 @@ class EditFoodViewController: UIViewController,UIPickerViewDelegate,UIPickerView
             }.resume()
     }
     
+    /*
+        The method layout picker view.
+     */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         categoryId = (categoryList[row]["cid"] as? Int)!
     }
     
+    /*
+     The method layout picker view.
+     */
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if categoryList.count != 0 {
             let titleString = categoryList[row]["categoryname"] as? String
@@ -119,11 +130,17 @@ class EditFoodViewController: UIViewController,UIPickerViewDelegate,UIPickerView
         return ""
     }
     
+    /*
+        Complete function for date picker.
+     */
     @objc func done() {
         expire.text = datePicker.date.toString(dateFormat: "MM-dd-yyyy")
         self.view.endEditing(true)
     }
     
+    /*
+        Create date picker.
+     */
     func createDatePicker() {
         datePicker.datePickerMode = .date
         let toolBar = UIToolbar()
@@ -134,13 +151,4 @@ class EditFoodViewController: UIViewController,UIPickerViewDelegate,UIPickerView
         expire.inputAccessoryView = toolBar
         expire.inputView = datePicker
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

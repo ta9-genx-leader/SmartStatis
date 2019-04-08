@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+    Food class
+ */
 class Food: NSObject {
     var foodId: Int?
     var userId: Int?

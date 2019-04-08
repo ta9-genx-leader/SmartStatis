@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+    Thie class is to layout view for guests.
+ */
 class GuestViewController: UIViewController {
     var currentUser: User?
     var finalReference: String?
@@ -28,7 +31,6 @@ class GuestViewController: UIViewController {
     @IBOutlet weak var loginButtonOutlet: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         loginButtonOutlet.layer.cornerRadius = 5
         loginButtonOutlet.clipsToBounds = true
         loginButtonOutlet.layer.shadowColor = UIColor.lightGray.cgColor
@@ -47,6 +49,9 @@ class GuestViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    /*
+        Generate reference number
+     */
     func generateReference() {
         let loginURL = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/user/getalluser"
         guard let url = URL(string: loginURL) else { return}
@@ -66,6 +71,9 @@ class GuestViewController: UIViewController {
             }.resume()
     }
     
+    /*
+        Sign up for guests.
+     */
     func guestSignUp(reference: String) {
         guard let postUrl = URL(string: "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/user/adduser?firstname=" + "guest" + "&lastname=" + "guest" + "&email=" + reference + "@hotmail.com" + "&password=" + "guest") else { return}
         var postRequest = URLRequest(url: postUrl)
@@ -97,6 +105,9 @@ class GuestViewController: UIViewController {
         task.resume()
     }
     
+    /*
+        Guest signs in.
+     */
     func guestSignIn(reference:String) {
         let loginURL = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/user/getuserbyemailandpassword?email=" + reference + "@hotmail.com" + "&password=guest"
         guard let url = URL(string: loginURL) else { return}
@@ -128,6 +139,9 @@ class GuestViewController: UIViewController {
             }.resume()
     }
     
+    /*
+        Start animation.
+     */
     func startProcessing() {
         processing.center = self.view.center
         processing.hidesWhenStopped = true
@@ -136,15 +150,18 @@ class GuestViewController: UIViewController {
         processing.startAnimating()
     }
     
+    /*
+        Stop animation.
+     */
     func stopProcessing() {
         processing.stopAnimating()
     }
 
-  
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    /*
+        Prepare for segue.
+     */
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MainSegue" {
             let tabBarController: TabBarViewController = segue.destination as! TabBarViewController
             tabBarController.currentUser = currentUser

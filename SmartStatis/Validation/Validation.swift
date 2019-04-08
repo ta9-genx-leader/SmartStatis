@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+    Validation calss for string.
+ */
 class Validation: NSObject {
 
     func isValidEmailAddress(emailAddressString: String) -> Bool {

@@ -8,6 +8,9 @@
 
 import UIKit
 import MapKit
+/*
+    This class is to layout the home page.
+ */
 class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,FridgeDelegate, FreezerDelegate, PantryDelegate {
     func updatePantry(food: [Food]) {
         pantry = food
@@ -65,7 +68,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
     @IBOutlet weak var collectionView: UICollectionView!
     var refreshControl = UIRefreshControl()
     var currentItemIndex: Int?
-    // Collection
     let numberOfCellsPerRow: CGFloat = 3
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
@@ -91,6 +93,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
     var bestStoreTemp : Int?
     var firstDownloadData = true
     
+    /*
+        This method is to set refresh button for the view.
+     */
     @objc func refreshCollection() {
         if !processing.isAnimating {
             UpdateData()
@@ -101,10 +106,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"refresh-50px"), style: .plain, target: self, action: #selector(refreshCollection))
-        
         self.UpdateData()
         weatherTimer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(getWeather), userInfo: nil, repeats: true)
-        self.startProcessing()
         if (CLLocationManager.locationServicesEnabled())
         {
             locationManager = CLLocationManager()
@@ -114,11 +117,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
             locationManager.startUpdatingLocation()
             weatherTimer.fire()
         }
-        
         topView.dropShadow()
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,13 +132,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         expireNoLabel.text = String(expireNumber)
     }
     
+    /*
+        This method is to update data from the database.
+     */
     func UpdateData() {
-        if firstDownloadData {
-            self.startProcessing()
-        }
-        else {
-            self.collectionStartProcessing()
-        }
         showList = [Food]()
         totalFood = [Food]()
         bin = [Food]()
@@ -201,12 +197,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
                     }
                 }
                 catch{
+                    
                     print(error)
                 }
             }
             }.resume()
     }
     
+    /*
+        This method is to get information for the weather temperature.
+     */
     @objc func getWeather() {
         if lat != nil && lon != nil {
             let weatherUrl = weatherBaseUrl + lat! + "&lon=" + lon! + weatherApiKey
@@ -258,7 +258,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
                             }
                         default:
                             print("Error weather")
-                            print("Error weather")
                         }
                         DispatchQueue.main.async {
                             if Int(round(temperature)) > self.bestStoreTemp! {
@@ -275,6 +274,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
                         }
                     }
                     catch{
+                        self.stopProcessing()
                         print(error)
                     }
                 }
@@ -352,16 +352,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         }
     }
     
-    func collectionStartProcessing() {
-        self.collectionView.isHidden = true
-        locationSegment.isUserInteractionEnabled = false
-        processing.center = self.view.center
-        processing.hidesWhenStopped = true
-        processing.style = UIActivityIndicatorView.Style.gray
-        self.view.addSubview(processing)
-        processing.startAnimating()
-    }
-
     func collectionStopProcessing() {
         self.collectionView.isHidden = false
         locationSegment.isUserInteractionEnabled = true
@@ -369,6 +359,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         self.viewWillAppear(true)
     }
     
+    /*
+        This method is to set the circle animation.
+     */
     func startProcessing() {
         self.collectionView.isHidden = true
         self.segmentView.isHidden = true
@@ -379,6 +372,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         processing.startAnimating()
     }
     
+    /*
+        This method is to stop the circle animation.
+     */
     func stopProcessing() {
         self.collectionView.isHidden = false
         self.segmentView.isHidden = false
@@ -386,6 +382,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         self.viewWillAppear(true)
     }
     
+    /*
+        This method is to get GPS service.
+     */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc: CLLocation=locations.last!
         currentLocation = loc.coordinate
@@ -394,6 +393,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         self.getWeather()
     }
     
+    /*
+        This method is to layout collection view.
+     */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (showList.count) >= 9 {
             return 9
@@ -406,6 +408,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         }
     }
     
+    /*
+     This method is to layout collection view.
+     */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionCell
         let dateFormat = DateConverter()
@@ -461,6 +466,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         }
     }
     
+    /*
+     This method is to layout collection view.
+     */
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -468,6 +476,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
         return CGSize(width: width/3, height: width/3);
     }
     
+    /*
+     This method is to layout collection view.
+     */
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch locationSegment.selectedSegmentIndex {
         case 0:
@@ -482,7 +493,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
     }
     
 
-    
+    /*
+        This method is to set up the action before a segue is launched.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "FridgeSegue":
@@ -508,7 +521,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
     }
 }
 
-// Stackoverflow
+/*
+    This method is to set the shadow for UI View.
+ */
 extension UIView {
     func dropShadow(scale: Bool = true) {
         layer.masksToBounds = false

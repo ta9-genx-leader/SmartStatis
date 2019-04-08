@@ -10,6 +10,9 @@ import UIKit
 protocol ScanReceiptDelegate {
     func scanReceiptDelegate(scanned:Bool)
 }
+/*
+    This class is to layout receipt table view.
+ */
 class ReceiptTableController: UITableViewController,EditFoodDelegate {
     func editFood(food: Food) {
         foodList[selectedIndex!] = food
@@ -29,6 +32,9 @@ class ReceiptTableController: UITableViewController,EditFoodDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))
     }
 
+    /*
+        This method save the food from the receipts.
+     */
     @objc func save() {
         DispatchQueue.main.async {
             for i in 0...self.foodList.count - 1 {
@@ -44,18 +50,26 @@ class ReceiptTableController: UITableViewController,EditFoodDelegate {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    // MARK: - Table view data source
 
+    /*
+        This method is to set the number of sections in the view.
+     */
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
+    /*
+    This method is to set the number of sections in the view.
+    */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return (receiptDetail?.count)!
     }
 
+    /*
+    This method is to set the number of sections in the view.
+    */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          if foodList.count < (receiptDetail?.count)!{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReceiptCell", for: indexPath) as! ReceiptCell
@@ -179,18 +193,14 @@ class ReceiptTableController: UITableViewController,EditFoodDelegate {
         }
     }
     
+    /*
+     This method is to set the layout in the view.
+     */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 140.0
     }
 
-    
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         // action one
@@ -213,36 +223,9 @@ class ReceiptTableController: UITableViewController,EditFoodDelegate {
         return [editAction, deleteAction]
     }
     
-
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+        This method is to set the number of sections in the view.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditFoodSegue" {
             let controller: EditFoodViewController = segue.destination as! EditFoodViewController
@@ -252,6 +235,9 @@ class ReceiptTableController: UITableViewController,EditFoodDelegate {
         }
     }
     
+    /*
+        This method is to upload receipt.
+     */
     func uploadReceipt(userId:String,cateId:String,locationId:String,foodName:String,start:String,price:String,expire:String) {
         guard let postUrl = URL(string: "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/food/addfood?uid=" + String(userId) + "&cid=" + String(cateId) + "&lid=" + String(locationId) + "&name=" + foodName.replacingOccurrences(of: " ", with: "_") + "&start=" + start + "&price=" + price + "&expire=" + expire ) else { return}
         var postRequest = URLRequest(url: postUrl)
@@ -278,6 +264,9 @@ class ReceiptTableController: UITableViewController,EditFoodDelegate {
         task.resume()
     }
     
+    /*
+        Start animation.
+     */
     func startProcessing() {
         self.tableView.isHidden = true
         processing.center = self.view.center
@@ -287,11 +276,13 @@ class ReceiptTableController: UITableViewController,EditFoodDelegate {
         processing.startAnimating()
     }
     
+    /*
+        Stop animation.
+     */
     func stopProcessing() {
         self.tableView.isHidden = false
         processing.stopAnimating()
         self.viewWillAppear(true)
     }
-    
 }
 

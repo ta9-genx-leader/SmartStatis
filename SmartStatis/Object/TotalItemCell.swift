@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+    Class for total number of food item.
+ */
 class TotalItemCell: UITableViewCell {
     
     @IBOutlet weak var goodFood: UILabel!

@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+    Category cell class.
+ */
 class CollectionCell: UICollectionViewCell {
     @IBOutlet weak var collectionCellLabel: UILabel!
     @IBOutlet weak var cellImage: UIImageView!

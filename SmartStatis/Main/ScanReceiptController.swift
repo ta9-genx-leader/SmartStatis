@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 import Foundation
+/*
+    This class is class layout scanning receipt.
+ */
 class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var uid: Int?
     var receiptData: NSArray?
@@ -44,6 +47,10 @@ class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, U
         saveButtonOutlet.layer.shadowOpacity = 0.5
         // Do any additional setup after loading the view.
     }
+    
+    /*
+        The method takes photos.
+     */
     @objc func takePhoto() {
         let controller = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
@@ -57,6 +64,9 @@ class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, U
         self.present(controller, animated: true, completion: nil)
     }
     
+    /*
+        This method is to set image picker.
+     */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = pickedImage
@@ -64,6 +74,9 @@ class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, U
         }
     }
     
+    /*
+        This method uploads images.
+     */
     func uploadImage(image:UIImage) {
         self.startProcessing()
         let chosenImage = imageView.image
@@ -104,18 +117,28 @@ class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, U
                                     }
                                 }
                                 else {
+                                    let alert = UIAlertController(title: "Receipt required", message: "Please try agian.", preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                                    self.present(alert, animated: true)
+                                    self.stopProcessing()
                                     return
                                 }
                             }
                             catch{
                                 print(error)
+                                let alert = UIAlertController(title: "Receipt required", message: "Please try agian.", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                                 self.stopProcessing()
                             }
                         }
                         }.resume()
                 }
                 catch {
-                    
+                    let alert = UIAlertController(title: "Receipt required", message: "Please try agian.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    self.stopProcessing()
                 }
             }
         }
@@ -123,8 +146,11 @@ class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
     
-    
+    /*
+        The method start circle animation for waiting.
+     */
     func startProcessing() {
+        processing.isHidden = false
         self.imageView.isHidden = true
         self.saveButtonOutlet.isHidden = true
         processing.center = self.view.center
@@ -134,13 +160,20 @@ class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, U
         processing.startAnimating()
     }
     
+    /*
+        The method stops circle animation for waiting.
+     */
     func stopProcessing() {
         self.imageView.isHidden = false
         self.saveButtonOutlet.isHidden = false
         processing.stopAnimating()
+        processing.isHidden = true
         self.viewWillAppear(true)
     }
-
+    
+    /*
+        The method set actions before the segue is launched.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ReceiptDetailSegue" {
             let controller: ReceiptTableController = segue.destination as! ReceiptTableController
@@ -148,14 +181,4 @@ class ScanReceiptController: UIViewController,UIImagePickerControllerDelegate, U
             controller.uid = self.uid!
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
