@@ -258,6 +258,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate,UICollecti
                             }
                         default:
                             print("Error weather")
+                            print("Error weather")
                         }
                         DispatchQueue.main.async {
                             if Int(round(temperature)) > self.bestStoreTemp! {
