@@ -7,14 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65328AF422590C3E00BF5941 /* ReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65328AF322590C3E00BF5941 /* ReceiptCell.swift */; };
+		65328AF62259169400BF5941 /* ReceiptTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65328AF52259169400BF5941 /* ReceiptTableController.swift */; };
+		65328AF822593DB300BF5941 /* AddFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65328AF722593DB300BF5941 /* AddFoodCell.swift */; };
+		65490F1F2254ECB000C110DA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65490F1E2254ECB000C110DA /* HomeViewController.swift */; };
+		65490F212255A02B00C110DA /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65490F202255A02B00C110DA /* SettingTableViewController.swift */; };
+		65490F232255A0C700C110DA /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65490F222255A0C700C110DA /* SettingCell.swift */; };
+		655B27BF2257210700B694CE /* FoodDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B27BE2257210700B694CE /* FoodDetailController.swift */; };
 		65993FD6224DA657009B9EED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993FD5224DA657009B9EED /* AppDelegate.swift */; };
-		65993FD8224DA657009B9EED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993FD7224DA657009B9EED /* ViewController.swift */; };
 		65993FDB224DA657009B9EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65993FD9224DA657009B9EED /* Main.storyboard */; };
 		65993FDE224DA657009B9EED /* SmartStatis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65993FDC224DA657009B9EED /* SmartStatis.xcdatamodeld */; };
 		65993FE0224DA658009B9EED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65993FDF224DA658009B9EED /* Assets.xcassets */; };
 		65993FE3224DA658009B9EED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65993FE1224DA658009B9EED /* LaunchScreen.storyboard */; };
 		65993FEE224DA658009B9EED /* SmartStatisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993FED224DA658009B9EED /* SmartStatisTests.swift */; };
 		65993FF9224DA658009B9EED /* SmartStatisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993FF8224DA658009B9EED /* SmartStatisUITests.swift */; };
+		65994007224DA6F2009B9EED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65994006224DA6F2009B9EED /* LoginViewController.swift */; };
+		6599400C224DA76A009B9EED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599400B224DA76A009B9EED /* User.swift */; };
+		6599400E224DA791009B9EED /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599400D224DA791009B9EED /* Food.swift */; };
+		65994010224DA79C009B9EED /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599400F224DA79C009B9EED /* Category.swift */; };
+		65994013224F3419009B9EED /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65994012224F3419009B9EED /* RegisterViewController.swift */; };
+		65994015224F3C54009B9EED /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65994014224F3C54009B9EED /* Validation.swift */; };
+		659940192250B6CA009B9EED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659940182250B6CA009B9EED /* MainViewController.swift */; };
+		6599401D22521B6D009B9EED /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599401C22521B6D009B9EED /* TabBarViewController.swift */; };
+		6599402022523E04009B9EED /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599401F22523E04009B9EED /* SettingViewController.swift */; };
+		6599402C2252577C009B9EED /* BinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599402B2252577C009B9EED /* BinTableViewController.swift */; };
+		6599402E225259CF009B9EED /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599402D225259CF009B9EED /* FoodCell.swift */; };
+		6599403022526BDE009B9EED /* TotalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599402F22526BDE009B9EED /* TotalItemCell.swift */; };
+		659940342252D676009B9EED /* FridgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659940332252D676009B9EED /* FridgeTableViewController.swift */; };
+		659940372252D79A009B9EED /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659940362252D79A009B9EED /* DateConverter.swift */; };
+		659940392252FCD0009B9EED /* FreezerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659940382252FCD0009B9EED /* FreezerTableViewController.swift */; };
+		6599403C2252FEA4009B9EED /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6599403B2252FEA4009B9EED /* PantryTableViewController.swift */; };
+		65A46CEA22563E510011B031 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A46CE922563E510011B031 /* CollectionCell.swift */; };
+		65FB7352225AC56E00378849 /* EditFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB7351225AC56E00378849 /* EditFoodViewController.swift */; };
+		65FB7354225B39DA00378849 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB7353225B39DA00378849 /* GuestViewController.swift */; };
+		65FF536F225864770001AFD6 /* ScanReceiptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF536E225864770001AFD6 /* ScanReceiptController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +61,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65328AF322590C3E00BF5941 /* ReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCell.swift; sourceTree = "<group>"; };
+		65328AF52259169400BF5941 /* ReceiptTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableController.swift; sourceTree = "<group>"; };
+		65328AF722593DB300BF5941 /* AddFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodCell.swift; sourceTree = "<group>"; };
+		65490F1E2254ECB000C110DA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		65490F202255A02B00C110DA /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		65490F222255A0C700C110DA /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingCell.swift; path = SmartStatis/Object/SettingCell.swift; sourceTree = SOURCE_ROOT; };
+		655B27BE2257210700B694CE /* FoodDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailController.swift; sourceTree = "<group>"; };
 		65993FD2224DA657009B9EED /* SmartStatis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartStatis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65993FD5224DA657009B9EED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65993FD7224DA657009B9EED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		65993FDA224DA657009B9EED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65993FDD224DA657009B9EED /* SmartStatis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartStatis.xcdatamodel; sourceTree = "<group>"; };
 		65993FDF224DA658009B9EED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +81,26 @@
 		65993FF4224DA658009B9EED /* SmartStatisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartStatisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65993FF8224DA658009B9EED /* SmartStatisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartStatisUITests.swift; sourceTree = "<group>"; };
 		65993FFA224DA658009B9EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65994006224DA6F2009B9EED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6599400B224DA76A009B9EED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6599400D224DA791009B9EED /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		6599400F224DA79C009B9EED /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		65994012224F3419009B9EED /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		65994014224F3C54009B9EED /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		659940182250B6CA009B9EED /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6599401C22521B6D009B9EED /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		6599401F22523E04009B9EED /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		6599402B2252577C009B9EED /* BinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinTableViewController.swift; sourceTree = "<group>"; };
+		6599402D225259CF009B9EED /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCell.swift; path = SmartStatis/Object/FoodCell.swift; sourceTree = SOURCE_ROOT; };
+		6599402F22526BDE009B9EED /* TotalItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalItemCell.swift; sourceTree = "<group>"; };
+		659940332252D676009B9EED /* FridgeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeTableViewController.swift; sourceTree = "<group>"; };
+		659940362252D79A009B9EED /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		659940382252FCD0009B9EED /* FreezerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreezerTableViewController.swift; sourceTree = "<group>"; };
+		6599403B2252FEA4009B9EED /* PantryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
+		65A46CE922563E510011B031 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		65FB7351225AC56E00378849 /* EditFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodViewController.swift; sourceTree = "<group>"; };
+		65FB7353225B39DA00378849 /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
+		65FF536E225864770001AFD6 /* ScanReceiptController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanReceiptController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65490F1D2254EC8F00C110DA /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				659940182250B6CA009B9EED /* MainViewController.swift */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
 		65993FC9224DA657009B9EED = {
 			isa = PBXGroup;
 			children = (
@@ -99,8 +159,15 @@
 		65993FD4224DA657009B9EED /* SmartStatis */ = {
 			isa = PBXGroup;
 			children = (
+				6599401E22523DF1009B9EED /* Setting */,
+				65490F1D2254EC8F00C110DA /* Food */,
+				659940352252D770009B9EED /* DateFunction */,
+				659940172250B6B4009B9EED /* Main */,
+				65994016224F3C5B009B9EED /* Validation */,
+				65994011224F33AB009B9EED /* Register */,
+				6599400A224DA744009B9EED /* Object */,
+				65994009224DA710009B9EED /* Login */,
 				65993FD5224DA657009B9EED /* AppDelegate.swift */,
-				65993FD7224DA657009B9EED /* ViewController.swift */,
 				65993FD9224DA657009B9EED /* Main.storyboard */,
 				65993FDF224DA658009B9EED /* Assets.xcassets */,
 				65993FE1224DA658009B9EED /* LaunchScreen.storyboard */,
@@ -126,6 +193,89 @@
 				65993FFA224DA658009B9EED /* Info.plist */,
 			);
 			path = SmartStatisUITests;
+			sourceTree = "<group>";
+		};
+		65994009224DA710009B9EED /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				65994006224DA6F2009B9EED /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		6599400A224DA744009B9EED /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				65490F222255A0C700C110DA /* SettingCell.swift */,
+				6599402F22526BDE009B9EED /* TotalItemCell.swift */,
+				6599402D225259CF009B9EED /* FoodCell.swift */,
+				6599400B224DA76A009B9EED /* User.swift */,
+				6599400D224DA791009B9EED /* Food.swift */,
+				6599400F224DA79C009B9EED /* Category.swift */,
+				65A46CE922563E510011B031 /* CollectionCell.swift */,
+				65328AF322590C3E00BF5941 /* ReceiptCell.swift */,
+				65328AF722593DB300BF5941 /* AddFoodCell.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		65994011224F33AB009B9EED /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				65994012224F3419009B9EED /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		65994016224F3C5B009B9EED /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				65994014224F3C54009B9EED /* Validation.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		659940172250B6B4009B9EED /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6599403A2252FE80009B9EED /* Location */,
+				6599401C22521B6D009B9EED /* TabBarViewController.swift */,
+				65490F1E2254ECB000C110DA /* HomeViewController.swift */,
+				655B27BE2257210700B694CE /* FoodDetailController.swift */,
+				65FF536E225864770001AFD6 /* ScanReceiptController.swift */,
+				65328AF52259169400BF5941 /* ReceiptTableController.swift */,
+				65FB7351225AC56E00378849 /* EditFoodViewController.swift */,
+				65FB7353225B39DA00378849 /* GuestViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6599401E22523DF1009B9EED /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				65490F202255A02B00C110DA /* SettingTableViewController.swift */,
+				6599401F22523E04009B9EED /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		659940352252D770009B9EED /* DateFunction */ = {
+			isa = PBXGroup;
+			children = (
+				659940362252D79A009B9EED /* DateConverter.swift */,
+			);
+			path = DateFunction;
+			sourceTree = "<group>";
+		};
+		6599403A2252FE80009B9EED /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				6599403B2252FEA4009B9EED /* PantryTableViewController.swift */,
+				659940382252FCD0009B9EED /* FreezerTableViewController.swift */,
+				6599402B2252577C009B9EED /* BinTableViewController.swift */,
+				659940332252D676009B9EED /* FridgeTableViewController.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +409,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65993FD8224DA657009B9EED /* ViewController.swift in Sources */,
+				65FB7352225AC56E00378849 /* EditFoodViewController.swift in Sources */,
+				659940372252D79A009B9EED /* DateConverter.swift in Sources */,
+				65994007224DA6F2009B9EED /* LoginViewController.swift in Sources */,
+				659940342252D676009B9EED /* FridgeTableViewController.swift in Sources */,
+				6599401D22521B6D009B9EED /* TabBarViewController.swift in Sources */,
+				65490F212255A02B00C110DA /* SettingTableViewController.swift in Sources */,
 				65993FD6224DA657009B9EED /* AppDelegate.swift in Sources */,
+				6599402C2252577C009B9EED /* BinTableViewController.swift in Sources */,
+				65994013224F3419009B9EED /* RegisterViewController.swift in Sources */,
+				659940392252FCD0009B9EED /* FreezerTableViewController.swift in Sources */,
+				65A46CEA22563E510011B031 /* CollectionCell.swift in Sources */,
+				65994015224F3C54009B9EED /* Validation.swift in Sources */,
+				65FF536F225864770001AFD6 /* ScanReceiptController.swift in Sources */,
+				6599400C224DA76A009B9EED /* User.swift in Sources */,
+				65328AF822593DB300BF5941 /* AddFoodCell.swift in Sources */,
+				655B27BF2257210700B694CE /* FoodDetailController.swift in Sources */,
+				65490F232255A0C700C110DA /* SettingCell.swift in Sources */,
+				65FB7354225B39DA00378849 /* GuestViewController.swift in Sources */,
+				65328AF62259169400BF5941 /* ReceiptTableController.swift in Sources */,
 				65993FDE224DA657009B9EED /* SmartStatis.xcdatamodeld in Sources */,
+				6599402E225259CF009B9EED /* FoodCell.swift in Sources */,
+				6599400E224DA791009B9EED /* Food.swift in Sources */,
+				65994010224DA79C009B9EED /* Category.swift in Sources */,
+				65490F1F2254ECB000C110DA /* HomeViewController.swift in Sources */,
+				65328AF422590C3E00BF5941 /* ReceiptCell.swift in Sources */,
+				659940192250B6CA009B9EED /* MainViewController.swift in Sources */,
+				6599403022526BDE009B9EED /* TotalItemCell.swift in Sources */,
+				6599403C2252FEA4009B9EED /* PantryTableViewController.swift in Sources */,
+				6599402022523E04009B9EED /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +612,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83XPUPS7KR;
 				INFOPLIST_FILE = SmartStatis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,7 +623,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Jerry.SmartStatis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -453,7 +631,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83XPUPS7KR;
 				INFOPLIST_FILE = SmartStatis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Jerry.SmartStatis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
