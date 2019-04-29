@@ -10,7 +10,6 @@ Function:
 6. Help users to manage shopping list.
 7. Help users to calculate the amount of money wasted on the expired food.
 8. Search corresponding recipes for the stored food.
-
 # Itertion function
 Iteration 1: 
   1-1 Manage food in the current storage (Fridge/Freezer/Pantry).
@@ -24,7 +23,7 @@ Iteration 2:
 Iteration 3:
   3-1 Help users to calculate the amount of money wasted on the expired food.
 # Development platform
-  Xcode/Swift
+  Xcode/Swift/IOS system
 # Installation 
   1. Download Xcode from APP store
   2. Download the SmartStatis project and save it to your destination.
