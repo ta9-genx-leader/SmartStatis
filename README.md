@@ -23,12 +23,14 @@ Iteration 1:
    1-4 Suggest the recommended food storage length based on open data. 
    
    1-5 Notify user the condition of stored food and the length of expiry date.
+   
   
 Iteration 2:
 
    2-1 Help users to manage shopping list.
   
    2-2 Search corresponding recipes for the stored food.
+   
   
 Iteration 3:
 
