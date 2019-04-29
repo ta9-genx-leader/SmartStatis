@@ -14,15 +14,14 @@ Function:
 # Iteration function
 Iteration 1: 
 
-    1-1 Manage food in the current storage (Fridge/Freezer/Pantry).
+   1-1 Manage food in the current storage (Fridge/Freezer/Pantry).
   
-    1-2 Record food purchased from supermarkets by scanning the receipts.
+   1-2 Record food purchased from supermarkets by scanning the receipts.
   
-    1-3 Add Food with user input.
+   1-3 Add Food with user input.
   
-    1-4 Suggest the recommended food storage length based on open data.
-  
-    1-5 Notify user the condition of stored food and the length of expiry date.
+   1-4 Suggest the recommended food storage length based on open data. 
+   1-5 Notify user the condition of stored food and the length of expiry date.
   
 Iteration 2:
 
