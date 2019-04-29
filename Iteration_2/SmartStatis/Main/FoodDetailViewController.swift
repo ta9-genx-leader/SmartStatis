@@ -577,14 +577,14 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                     cell.foodCategory.text = "Other"
                 }
                 var index = 0
-                var selectedIndex: Int?
+                var selectedIndex = 0
                 for i in categoryList! {
                     if i == cell.foodCategory.text {
                         selectedIndex = index
                     }
                     index = index + 1
                 }
-                pickerView.selectRow(selectedIndex!, inComponent: 0, animated: false)
+                pickerView.selectRow(selectedIndex, inComponent: 0, animated: false)
                 if editable == false {
                     cell.foodCategory.borderStyle = .none
                     cell.foodCategory.isUserInteractionEnabled = false
