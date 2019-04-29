@@ -21,17 +21,18 @@ Iteration 1:
    1-3 Add Food with user input.
   
    1-4 Suggest the recommended food storage length based on open data. 
+   
    1-5 Notify user the condition of stored food and the length of expiry date.
   
 Iteration 2:
 
-    2-1 Help users to manage shopping list.
+   2-1 Help users to manage shopping list.
   
-    2-2 Search corresponding recipes for the stored food.
+   2-2 Search corresponding recipes for the stored food.
   
 Iteration 3:
 
-    3-1 Help users to calculate the amount of money wasted on the expired food.
+   3-1 Help users to calculate the amount of money wasted on the expired food.
   
 # Development platform
   Xcode/Swift
