@@ -27,6 +27,7 @@ Iteration 3:
   Xcode/Swift
 # Installation 
   1. Download Xcode from APP store
-  2. Download the project and save it to your destination.
-  3. Open the downloaded project with Xcode.
-  4. 
+  2. Download the SmartStatis project and save it to your destination.
+  3. Open the downloaded project file named SmartStatis.xcodeproj in Xcode.
+  4. Select a simulator/plug your iphon as your simulator destination.
+  5. Click the Launch button to build the project on your destination.
