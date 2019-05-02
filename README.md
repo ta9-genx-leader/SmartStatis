@@ -41,7 +41,7 @@ Iteration 3:
 # Application System
   IOS
 # Database system
-  MySQl
+  MySQL
 # Installation 
   1. Download Xcode from APP store
   2. Download the SmartStatis project and save it to your destination.
