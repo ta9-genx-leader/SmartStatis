@@ -48,3 +48,13 @@ Iteration 3:
   3. Open the downloaded project file named SmartStatis.xcodeproj in Xcode.
   4. Select a simulator/plug your iphon as your simulator destination.
   5. Click the Launch button to build the project on your destination.
+# Version Control
+  v2-2-1 Update informatio button in GuestView
+  
+  v2-2-2 Replace WKWebView with Youtube library
+  
+  v2-2-3 Create Recipe search Section
+  
+  v2-2-4 Default report section
+  
+
