@@ -1237,25 +1237,65 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lebrroaslkdlasdjlsajdklasj;laskdlas;dkas;dkas;dlkas;dkas;dlkas;dlaks;dlask;dlakd;asldk;aslkd;ld" translatesAutoresizingMaskIntoConstraints="NO" id="G58-8n-P9e">
-                                                    <rect key="frame" x="16" y="185" width="288" height="46"/>
+                                                    <rect key="frame" x="15" y="185" width="290" height="46"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="G58-8n-P9e" firstAttribute="leading" secondItem="DqO-YS-qV0" secondAttribute="leading" constant="16" id="Jrg-Z7-mLb"/>
+                                                <constraint firstItem="G58-8n-P9e" firstAttribute="width" secondItem="PTj-tn-9Jy" secondAttribute="width" id="0jY-wv-IfM"/>
+                                                <constraint firstItem="G58-8n-P9e" firstAttribute="centerX" secondItem="DqO-YS-qV0" secondAttribute="centerX" id="Jyi-s7-vcF"/>
                                                 <constraint firstItem="G58-8n-P9e" firstAttribute="top" secondItem="PTj-tn-9Jy" secondAttribute="bottom" constant="8" id="SxG-gT-SkI"/>
                                                 <constraint firstItem="PTj-tn-9Jy" firstAttribute="top" secondItem="DqO-YS-qV0" secondAttribute="topMargin" constant="16" id="fnz-8N-xdS"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="G58-8n-P9e" secondAttribute="bottom" constant="8" id="knu-BN-eC7"/>
                                                 <constraint firstItem="PTj-tn-9Jy" firstAttribute="leading" secondItem="DqO-YS-qV0" secondAttribute="leadingMargin" id="q9V-Rh-2wP"/>
-                                                <constraint firstAttribute="trailing" secondItem="G58-8n-P9e" secondAttribute="trailing" constant="16" id="rqE-GA-cEZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="PTj-tn-9Jy" secondAttribute="trailing" id="yWE-oZ-hYZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="recipeVideoView" destination="PTj-tn-9Jy" id="nLG-Nm-5Ne"/>
                                             <outlet property="videoTitle" destination="G58-8n-P9e" id="ob0-mX-2zV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTextCell" rowHeight="150" id="acE-X6-sYw" customClass="TextCell" customModule="SmartStatis" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="305.5" width="320" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="acE-X6-sYw" id="Jp3-o1-qIX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get innovation for your food" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksF-lT-JFm">
+                                                    <rect key="frame" x="31" y="19" width="258" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Tap Search Bar above and Enter keyword for creative recipe" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpi-Hj-PeK">
+                                                    <rect key="frame" x="32" y="57" width="256" height="93"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ksF-lT-JFm" firstAttribute="centerX" secondItem="Jp3-o1-qIX" secondAttribute="centerX" id="1I1-Q3-Xhn"/>
+                                                <constraint firstItem="Zpi-Hj-PeK" firstAttribute="centerX" secondItem="Jp3-o1-qIX" secondAttribute="centerX" id="2sm-WK-afx"/>
+                                                <constraint firstItem="ksF-lT-JFm" firstAttribute="height" secondItem="Jp3-o1-qIX" secondAttribute="height" multiplier="0.2" id="Gfk-5q-hBH"/>
+                                                <constraint firstItem="Zpi-Hj-PeK" firstAttribute="width" secondItem="Jp3-o1-qIX" secondAttribute="width" multiplier="0.8" id="J5t-84-KZR"/>
+                                                <constraint firstItem="ksF-lT-JFm" firstAttribute="leading" secondItem="Jp3-o1-qIX" secondAttribute="leadingMargin" constant="16" id="KZe-Lq-daa"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zpi-Hj-PeK" secondAttribute="bottom" id="bCd-KE-xei"/>
+                                                <constraint firstItem="Zpi-Hj-PeK" firstAttribute="top" secondItem="ksF-lT-JFm" secondAttribute="bottom" constant="8" id="cvC-38-oCr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ksF-lT-JFm" secondAttribute="trailing" constant="16" id="isN-Ra-C69"/>
+                                                <constraint firstItem="ksF-lT-JFm" firstAttribute="top" secondItem="Jp3-o1-qIX" secondAttribute="topMargin" constant="8" id="zvW-mf-wfr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellBody" destination="Zpi-Hj-PeK" id="jJg-Wf-HFw"/>
+                                            <outlet property="cellTitle" destination="ksF-lT-JFm" id="jD4-9g-xS3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1269,6 +1309,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="ZGe-sj-mIJ"/>
                                 </constraints>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -1293,71 +1334,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTZ-pP-CkL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7807.5" y="-29.577464788732396"/>
-        </scene>
-        <!--Recipe-->
-        <scene sceneID="Z46-JB-pvg">
-            <objects>
-                <tableViewController id="YcF-D6-3uD" customClass="RecipeSearchController" customModule="SmartStatis" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="0xE-Jo-Ttv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Keyword for recipe" id="Ibv-Pg-Ttv">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeTableCell" rowHeight="250" id="e9i-o0-t0g" customClass="RecipeCell" customModule="SmartStatis" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="320" height="250"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e9i-o0-t0g" id="2mM-rV-EhK">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qeq-KP-kLN" customClass="WKYTPlayerView">
-                                            <rect key="frame" x="16" y="27" width="288" height="150"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="150" id="ahe-MV-gMH"/>
-                                            </constraints>
-                                        </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lebrroaslkdlasdjlsajdklasj;laskdlas;dkas;dkas;dlkas;dkas;dlkas;dlaks;dlask;dlakd;asldk;aslkd;ld" translatesAutoresizingMaskIntoConstraints="NO" id="KeU-l1-meH">
-                                            <rect key="frame" x="16" y="185" width="288" height="46"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="KeU-l1-meH" secondAttribute="bottom" constant="8" id="2Gr-Ct-x4D"/>
-                                        <constraint firstItem="Qeq-KP-kLN" firstAttribute="top" secondItem="2mM-rV-EhK" secondAttribute="topMargin" constant="16" id="9dx-Le-9I6"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Qeq-KP-kLN" secondAttribute="trailing" id="HRa-6O-958"/>
-                                        <constraint firstItem="KeU-l1-meH" firstAttribute="leading" secondItem="2mM-rV-EhK" secondAttribute="leading" constant="16" id="hpz-wy-eRy"/>
-                                        <constraint firstAttribute="trailing" secondItem="KeU-l1-meH" secondAttribute="trailing" constant="16" id="jvU-fv-Hkz"/>
-                                        <constraint firstItem="KeU-l1-meH" firstAttribute="top" secondItem="Qeq-KP-kLN" secondAttribute="bottom" constant="8" id="pjs-EE-16A"/>
-                                        <constraint firstItem="Qeq-KP-kLN" firstAttribute="leading" secondItem="2mM-rV-EhK" secondAttribute="leadingMargin" id="qJe-kr-aCh"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="recipeVideoView" destination="Qeq-KP-kLN" id="heG-Ex-oFy"/>
-                                    <outlet property="videoTitle" destination="KeU-l1-meH" id="Otk-fK-It7"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="YcF-D6-3uD" id="h9X-Pa-oap"/>
-                            <outlet property="delegate" destination="YcF-D6-3uD" id="EzZ-Jh-nn6"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Recipe" image="cook-100px" id="2Kb-RT-zcr"/>
-                    <connections>
-                        <outlet property="searchBar" destination="Ibv-Pg-Ttv" id="JAY-8b-5m4"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J2b-C9-uij" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-6215.625" y="-16.901408450704224"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="sH5-qO-By6">

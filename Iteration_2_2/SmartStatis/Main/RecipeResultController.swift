@@ -83,7 +83,7 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
      */
     func search(keyword:String) {
         let videoType = keyword.replacingOccurrences(of: " ", with: "+")
-        let apiKey = "AIzaSyBm1PyTXjrOz9qymfR7WHO4f0rqmNnJuUs"
+        let apiKey = "AIzaSyDSqPMGrUCyPyrZWSkCSABN6cgsU9EaH2I"
         var urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=\(videoType)&type=video&videoSyndicated=true&chart=mostPopular&maxResults=10&safeSearch=strict&order=relevance&order=viewCount&type=video&relevanceLanguage=en&regionCode=AU&key=\(apiKey)"
         urlString = urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!
         let targetURL = URL(string: urlString)

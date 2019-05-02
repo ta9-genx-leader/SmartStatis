@@ -20,11 +20,22 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
         self.view.endEditing(true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if dataArray.count == 0 {
+            return 1
+        }
         return dataArray.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if dataArray.count == 0 {
+            return 2
+        }
         return 1
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "cookingView"))
+        self.tableView.backgroundView?.alpha = 0.3
     }
     
     /*
@@ -37,6 +48,42 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if dataArray.count == 0 {
+            switch indexPath.section {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeTableCell", for: indexPath) as! RecipeCell
+                cell.videoTitle.text = ""
+                cell.videoTitle.layer.backgroundColor = UIColor.clear.cgColor
+                cell.recipeVideoView.layer.backgroundColor = UIColor.clear.cgColor
+                cell.videoTitle.backgroundColor = UIColor.lightGray
+                cell.recipeVideoView.backgroundColor = UIColor.lightGray
+                cell.videoTitle.layer.cornerRadius = 10
+                cell.videoTitle.layer.masksToBounds = true
+                cell.recipeVideoView.layer.cornerRadius = 10
+                cell.recipeVideoView.layer.masksToBounds = true
+                print(cell.contentView.subviews.count)
+                let height = 140 + self.view.frame.size.height/6
+                if cell.contentView.subviews.count < 3 {
+                    cell.contentView.backgroundColor = UIColor.clear
+                    let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width - 20, height: height))
+                    whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 0.9])
+                    whiteRoundedView.layer.masksToBounds = false
+                    whiteRoundedView.layer.cornerRadius = 10.0
+                    whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
+                    whiteRoundedView.layer.shadowOpacity = Float(0.3/(Double(indexPath.row)+1))
+                    whiteRoundedView.layer.shadowRadius = 2
+                    cell.contentView.addSubview(whiteRoundedView)
+                    cell.contentView.sendSubviewToBack(whiteRoundedView)
+                }
+                cell.backgroundColor = UIColor.clear
+                cell.contentView.layer.opacity = Float(0.5/(Double(indexPath.row)+1))
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTextCell", for: indexPath) as! TextCell
+                cell.backgroundColor = UIColor.clear
+                return cell
+            }
+        }
         if indexPath.row + 1 > cellList.count {
             if processing.isAnimating {
                 stopProcessing()
@@ -44,8 +91,6 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeTableCell", for: indexPath) as! RecipeCell
             let videoId = dataArray[indexPath.row]["videoID"] as! String
             let title = dataArray[indexPath.row]["title"] as! String
-            let url = URL(string: "https://www.youtube.com/embed/" + videoId)!
-            print(url)
             cell.videoTitle.text = title.htmlDecoded
             cell.videoTitle.layer.backgroundColor = UIColor.clear.cgColor
             cell.recipeVideoView.load(withVideoId: videoId)
@@ -58,13 +103,15 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width - 20, height: height))
                 whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 0.9])
                 whiteRoundedView.layer.masksToBounds = false
-                whiteRoundedView.layer.cornerRadius = 5.0
+                whiteRoundedView.layer.cornerRadius = 10.0
                 whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
                 whiteRoundedView.layer.shadowOpacity = 0.4
                 whiteRoundedView.layer.shadowRadius = 2
                 cell.contentView.addSubview(whiteRoundedView)
                 cell.contentView.sendSubviewToBack(whiteRoundedView)
             }
+            cell.contentView.layer.opacity = 1
+            cell.backgroundColor = UIColor.clear
             return cell
         }
         else {
@@ -77,6 +124,12 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
     @IBOutlet var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.layer.shadowColor = UIColor.black.cgColor
+        searchBar.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        searchBar.layer.shadowRadius = 2.0
+        searchBar.layer.shadowOpacity = 0.4
+        searchBar.layer.masksToBounds = false
+        searchBar.backgroundColor = UIColor.darkGray
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.5))
         tableView.allowsSelection = false
         searchBar.delegate = self
@@ -91,7 +144,7 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
         startProcessing()
         cellList = [RecipeCell]()
         let videoType = keyword.replacingOccurrences(of: " ", with: "+")
-        let apiKey = "AIzaSyBm1PyTXjrOz9qymfR7WHO4f0rqmNnJuUs"
+        let apiKey = "AIzaSyDSqPMGrUCyPyrZWSkCSABN6cgsU9EaH2I"
         var urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=\(videoType)&type=video&videoSyndicated=true&chart=mostPopular&maxResults=10&safeSearch=strict&order=relevance&order=viewCount&type=video&relevanceLanguage=en&regionCode=AU&key=\(apiKey)"
         urlString = urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!
         let targetURL = URL(string: urlString)
