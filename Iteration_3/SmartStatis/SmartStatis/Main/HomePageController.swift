@@ -422,6 +422,14 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
         This method is to manage the action when the users tap a row.
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !self.checkWiFi() {
+            let alert = UIAlertController(title: "Disconnection", message: "Your device is disconnected.\r\nplease try to login again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
+                self.navigationController?.dismiss(animated: false, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         selectFood = showList[indexPath.row]
         selectedIndex = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
