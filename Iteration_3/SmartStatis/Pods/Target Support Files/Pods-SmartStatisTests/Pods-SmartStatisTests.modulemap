@@ -1,0 +1,6 @@
+framework module Pods_SmartStatisTests {
+  umbrella header "Pods-SmartStatisTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
