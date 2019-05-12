@@ -68,4 +68,6 @@ Iteration 3:
   v3-1-1 Report section completed
   
   v3-1-2 UI design changed.
+  
+  v3-1-3 Algoriths for receipts changed
 
