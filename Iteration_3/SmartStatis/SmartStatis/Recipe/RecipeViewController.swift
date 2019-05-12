@@ -67,8 +67,7 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
      This function is to determine the height for the rows in each section.
      */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 160 + self.view.frame.size.height/6
+        return 170 + self.view.frame.size.height/6
     }
     
     /*
@@ -89,7 +88,7 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 cell.recipeVideoView.layer.cornerRadius = 10
                 cell.recipeVideoView.layer.masksToBounds = true
                 print(cell.contentView.subviews.count)
-                let height = 140 + self.view.frame.size.height/6
+                let height = 150 + self.view.frame.size.height/6
                 if cell.contentView.subviews.count < 3 {
                     cell.contentView.backgroundColor = UIColor.clear
                     let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width - 20, height: height))
@@ -119,12 +118,16 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
             let videoId = dataArray[indexPath.row]["videoID"] as! String
             let title = dataArray[indexPath.row]["title"] as! String
             cell.videoTitle.text = title.htmlDecoded
+            cell.videoTitle.layer.cornerRadius = 10
+            cell.videoTitle.layer.masksToBounds = true
+            cell.recipeVideoView.layer.cornerRadius = 10
+            cell.recipeVideoView.layer.masksToBounds = true
             cell.videoTitle.layer.backgroundColor = UIColor.clear.cgColor
             cell.recipeVideoView.load(withVideoId: videoId)
             cell.recipeVideoView.layer.backgroundColor = UIColor.black.cgColor
             cellList.append(cell)
             print(cell.contentView.subviews.count)
-            let height = 140 + self.view.frame.size.height/6
+            let height = 150 + self.view.frame.size.height/6
             if cell.contentView.subviews.count < 3 {
                 cell.contentView.backgroundColor = UIColor.clear
                 let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width - 20, height: height))
@@ -142,6 +145,10 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
             return cell
         }
         else {
+            cellList[indexPath.row].videoTitle.layer.cornerRadius = 10
+            cellList[indexPath.row].videoTitle.layer.masksToBounds = true
+            cellList[indexPath.row].recipeVideoView.layer.cornerRadius = 10
+            cellList[indexPath.row].recipeVideoView.layer.masksToBounds = true
             return cellList[indexPath.row]
         }
     }

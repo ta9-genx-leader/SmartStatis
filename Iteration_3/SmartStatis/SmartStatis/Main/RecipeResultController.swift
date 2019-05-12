@@ -61,6 +61,8 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
             let videoId = dataArray[indexPath.row]["videoID"] as! String
             let title = dataArray[indexPath.row]["title"] as! String
             cell.titleTextView.text = title.htmlDecoded
+            cell.videoView.layer.cornerRadius = 10
+            cell.videoView.layer.masksToBounds = true
             cell.videoView.load(withVideoId: videoId)
             cell.videoView.backgroundColor = UIColor.black
             cellList.append(cell)
@@ -75,7 +77,7 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
         This method is to determine the height for the rows in each section.
      */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return self.view.frame.size.height/2
+         return 100 + self.view.frame.size.height/6
     }
     
     /*

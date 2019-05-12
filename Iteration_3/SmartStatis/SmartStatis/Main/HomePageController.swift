@@ -136,8 +136,8 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
         content.body = body
         content.badge = 1
         content.sound = UNNotificationSound.default
-        
-        let date = DateComponents(hour: 18, minute: 46)
+        let tabBar = tabBarController as! TabBarViewController
+        let date = DateComponents(hour: tabBar.hour, minute: tabBar.minute)
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
         
         let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)

@@ -11,6 +11,8 @@ import UIKit
     This class is to manage the tab bar controller.
  */
 class TabBarViewController: UITabBarController {
+    var hour = 18
+    var minute = 0
     var selectedNumberForMemebr = 0
     var numberOfMember: [String: Any]?
     var categoryList : [String]?
@@ -37,6 +39,18 @@ class TabBarViewController: UITabBarController {
             selectedNumberForMemebr = Int(defaults.string(forKey: "household")!)!
         } else {
             defaults.set("0", forKey: "household")
+        }
+        if defaults.string(forKey: "hour") != nil {
+            hour = Int(defaults.string(forKey: "hour")!)!
+        }
+        else {
+            defaults.set("18", forKey: "hour")
+        }
+        if defaults.string(forKey: "minute") != nil {
+            minute = Int(defaults.string(forKey: "minute")!)!
+        }
+        else {
+            defaults.set("00", forKey: "minute")
         }
         getReportData()
         self.tabBar.tintColor = UIColor.darkGray // Selected tab color
@@ -114,6 +128,16 @@ class TabBarViewController: UITabBarController {
         let reportViewController = navController.children.first as! SummaryController
         reportViewController.tabBar = self
         reportViewController.viewWillAppear(true)
+    }
+    
+    /*
+        This function is to update notification.
+     */
+    func updateNotification() {
+        let viewControllers = self.viewControllers
+        let navController = viewControllers![0] as! UINavigationController
+        let homeController = navController.children.first as! HomePageController
+        homeController.checkFoodDateForNotification()
     }
     
     /*
