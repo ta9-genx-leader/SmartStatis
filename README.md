@@ -66,6 +66,5 @@ Iteration 3:
   v2-2-4 Default report section
   
   v3-1-1 Report section completed
-         
          UI design changed.
 
