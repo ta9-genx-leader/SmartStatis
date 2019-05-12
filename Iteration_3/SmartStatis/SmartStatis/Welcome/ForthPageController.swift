@@ -26,7 +26,8 @@ class ForthPageController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        startButton.addShadowToButton(cornerRadius: 10)
+        startButton.addShadowToButton(cornerRadius: 5)
+        startButton.backgroundColor = UIColor(red: 1/255, green: 150/255, blue: 63/255, alpha: 1.0)
         logoImage.setImageRadiusWithShadow(100)
         // Do any additional setup after loading the view.
     }
