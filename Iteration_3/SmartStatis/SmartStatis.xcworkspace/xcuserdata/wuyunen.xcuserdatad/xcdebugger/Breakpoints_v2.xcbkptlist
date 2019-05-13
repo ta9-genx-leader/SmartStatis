@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Recipe/RecipeViewController.swift"
-            timestampString = "579380041.169861"
+            timestampString = "579437315.614853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Report/ReportDetailController.swift"
-            timestampString = "579380041.170092"
+            timestampString = "579437315.614966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Report/SummaryController.swift"
-            timestampString = "579380041.170599"
+            timestampString = "579437315.615087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Main/AddFoodViewController.swift"
-            timestampString = "579380041.178609"
+            timestampString = "579437315.62132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Shopping/ShoppingTableViewController.swift"
-            timestampString = "579380041.178673"
+            timestampString = "579437315.621379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -118,27 +118,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Main/ReceiptTableController.swift"
-            timestampString = "579380041.178754"
+            timestampString = "579437315.621447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "save()"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #2 () -&gt; () in SmartStatis.ReceiptTableController.save() -&gt; ()"
                   moduleName = "SmartStatis"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wuyunen/Desktop/Monash/FIT5120/Project/SmartStatis/SmartStatis/Main/ReceiptTableController.swift"
-                  timestampString = "579379570.795511"
+                  timestampString = "579414794.30896"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
@@ -146,14 +146,14 @@
                   offsetFromSymbolStart = "3317">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #2 () -&gt; () in SmartStatis.ReceiptTableController.save() -&gt; ()"
                   moduleName = "SmartStatis"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wuyunen/Desktop/Monash/FIT5120/Project/SmartStatis/SmartStatis/Main/ReceiptTableController.swift"
-                  timestampString = "579379570.797387"
+                  timestampString = "579414794.310829"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Recipe/RecipeViewController.swift"
-            timestampString = "579380041.178809"
+            timestampString = "579437315.621501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Main/TabBarViewController.swift"
-            timestampString = "579380041.1788729"
+            timestampString = "579437315.621563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Setting/SettingTableViewController.swift"
-            timestampString = "579380041.178995"
+            timestampString = "579437315.621618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Setting/SettingTableViewController.swift"
-            timestampString = "579380041.179067"
+            timestampString = "579437315.621686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -234,12 +234,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartStatis/Setting/SettingTableViewController.swift"
-            timestampString = "579380041.179147"
+            timestampString = "579437315.6217591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
             landmarkName = "gestureRecognizer(_:shouldReceive:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartStatis/Main/HomePageController.swift"
+            timestampString = "579437315.621822"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartStatis/Main/HomePageController.swift"
+            timestampString = "579437315.622105"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

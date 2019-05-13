@@ -57,6 +57,7 @@ class ReceiptTableController: UITableViewController,FoodDetailDelegate {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        processing.transform = CGAffineTransform(scaleX: 2, y: 2)
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.5))
         nextFoodIdUpload = nextFoodId
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))

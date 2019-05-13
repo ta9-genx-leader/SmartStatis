@@ -271,7 +271,9 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
         if !self.checkWiFi() {
             let alert = UIAlertController(title: "Disconnection", message: "Your device is disconnected.\r\nplease try to login again", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
-                self.dismiss(animated: false, completion: {self.home?.dismiss(animated: false, completion: nil)})
+                self.dismiss(animated: false, completion: {
+                    self.home?.dismiss(animated: false, completion: nil)
+                })
             }))
             self.present(alert, animated: true, completion: nil)
             return
@@ -833,7 +835,7 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                     }
                     index = index + 1
                 }
-                pickerView.selectRow(selectedIndex!, inComponent: 0, animated: false)
+                pickerView.selectRow(food!.categoryId!-1, inComponent: 0, animated: false)
                 if editable == false {
                     cell.foodCategory.borderStyle = .none
                     cell.foodCategory.isUserInteractionEnabled = false
@@ -963,6 +965,8 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeSegue" {
             let controller: RecipeResultController = segue.destination as! RecipeResultController
+            controller.home = self.home
+            controller.detailController = self
             let keyword = food?.keyword!.replacingOccurrences(of: "_", with: " ")
             if keyword!.count == 0 {
                 let foodName = food?.foodName!.replacingOccurrences(of: "_", with: " ")

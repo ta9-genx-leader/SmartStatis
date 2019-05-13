@@ -158,6 +158,7 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        processing.transform = CGAffineTransform(scaleX: 2, y: 2)
         searchBar.layer.shadowColor = UIColor.black.cgColor
         searchBar.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         searchBar.layer.shadowRadius = 2.0
@@ -249,5 +250,13 @@ class RecipeViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func stopProcessing() {
         tableView.accessibilityElementsHidden = false
         processing.stopAnimating()
+        if !self.checkWiFi() {
+            let alert = UIAlertController(title: "Disconnection", message: "Your device is disconnected.\r\nplease try to login again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
+                self.navigationController?.dismiss(animated: false, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
     }
 }

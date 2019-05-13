@@ -202,7 +202,7 @@ class SettingTableViewController: UITableViewController,UIPickerViewDataSource, 
             let alert = UIAlertController(title: "Log Out", message: "Are you sure to log out?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
-                self.navigationController?.dismiss(animated: false, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             }))
             self.present(alert, animated: true, completion: nil)
         }
@@ -213,7 +213,7 @@ class SettingTableViewController: UITableViewController,UIPickerViewDataSource, 
      */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 60
+        return 50
     }
     
     /*

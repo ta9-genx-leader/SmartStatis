@@ -13,6 +13,9 @@ import WebKit
  */
 class RecipeResultController: UIViewController, UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate  {
     var viewDismissed = false
+    var detailController: UIViewController?
+    var home: UIViewController?
+    var timeOut = false
     var numberOfLoad = 0
     var dataArray = [[String: AnyObject]]()
     var keyword :String?
@@ -34,7 +37,6 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
             webView.stopLoading()
         }
     }
-
     /*
         This method is to determine the number of rows in each section.
      */
@@ -91,15 +93,39 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
         let targetURL = URL(string: urlString)
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            if self.dataArray.count == 0 {
+                if !self.checkWiFi() {
+                    let alert = UIAlertController(title: "Disconnection", message: "Your device is disconnected.\r\nplease try to login again", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
+                        self.navigationController?.dismiss(animated: false, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.timeOut = true
+                    let alert = UIAlertController(title: "Fail To Download Video", message: "Please try agian.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    self.stopProcessing()
+                    return
+                }
+            }
+        })
+        
         let task = session.dataTask(with: targetURL!) {
             data, response, error in
             if error != nil {
-                print(error!.localizedDescription)
-                let alert = UIAlertController(title: "Video Not Found", message: "Please try agian.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Fail To Download Video", message: "Please try agian.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
+                    self.dismiss(animated: true, completion: nil)
+                }))
                 self.present(alert, animated: true)
                 return
             }
-            else {
+            else if !self.timeOut {
                 do {
                     typealias JSONObject = [String:AnyObject]
                     let  json = try JSONSerialization.jsonObject(with: data!, options: []) as! JSONObject
@@ -124,17 +150,21 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
                     }
                     else {
                         DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "Recipe Not Found", message: "Please Try Again", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak alert] (_) in
+                            let alert = UIAlertController(title: "Video Not Found", message: "Please try agian.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
                                 self.dismiss(animated: true, completion: nil)
                             }))
                             self.present(alert, animated: true)
+                            return
                         }
                     }
                 }
                 catch {
                     print("json error: \(error)")
                 }
+            }
+            else {
+                self.timeOut = false
             }
         }
         task.resume()
@@ -145,6 +175,7 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        processing.transform = CGAffineTransform(scaleX: 2, y: 2)
         startProcessing()
         exitOutlet.setRadiusWithShadow()
         self.tableView.alwaysBounceVertical = false
@@ -181,6 +212,7 @@ class RecipeResultController: UIViewController, UITableViewDelegate, UITableView
         tableView.accessibilityElementsHidden = false
         processing.stopAnimating()
     }
+    
 }
 
 extension WKWebView {

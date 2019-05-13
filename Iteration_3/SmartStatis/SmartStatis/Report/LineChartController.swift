@@ -62,11 +62,11 @@ class LineChartController: UIViewController {
 
         let set2: LineChartDataSet = LineChartDataSet(values: yVals2, label: "Avg Household Waste($AUD)")
         set2.axisDependency = .left // Line will correlate with left axis values
-        set2.setColor(UIColor.darkGray.withAlphaComponent(0.5))
-        set2.setCircleColor(UIColor.darkGray)
+        set2.setColor(UIColor.black.withAlphaComponent(1))
+        set2.setCircleColor(UIColor.black)
         set2.circleRadius = 4.0
         set2.fillAlpha = 65 / 255.0
-        set2.fillColor = UIColor.darkGray
+        set2.fillColor = UIColor.black
         set2.highlightColor = UIColor.white
         set2.drawCircleHoleEnabled = false
         set2.drawCirclesEnabled = false

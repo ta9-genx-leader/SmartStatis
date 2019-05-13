@@ -93,6 +93,7 @@ class GuestViewController: UIViewController,UITextFieldDelegate {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        processing.transform = CGAffineTransform(scaleX: 2, y: 2)
         checkWiFi()
         self.view.isHidden = true
         infoLabelOne.isHidden = true

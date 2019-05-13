@@ -12,6 +12,7 @@ import UserNotifications
     This class is to manage the view for Home tab.
  */
 class HomePageController: UIViewController, UITableViewDelegate, UITableViewDataSource ,UIPopoverPresentationControllerDelegate,FoodDetailDelegate,PopOverDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, NewFoodlDelegate,ScanReceiptDelegate,NextFoodIdDelegate {
+    var timeOut = false
     var dataloaded = false
     var nextFoodId: Int?
     var categoryList = [String]()
@@ -47,6 +48,7 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addAction(_ sender: Any) {
         performSegue(withIdentifier: "PopOverSegue", sender: self)
     }
+    
     
     /*
         This method is to manage NextFoodIdDelegate
@@ -198,7 +200,7 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
             dismiss(animated: true, completion: {
                 self.startProcessing()
                 self.tableView.isHidden = false
-                let chosenImage = self.photo
+                let chosenImage = self.photo?.resizeImage(CGSize(width:300, height: 300))
                 let imageData = chosenImage?.pngData()
                 let uploadUrlString = "https://api.imgur.com/3/upload"
                 let uploadUrl = URL(string: uploadUrlString)
@@ -206,62 +208,116 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
                 postRequest.addValue("Client-ID 546c25a59c58ad7", forHTTPHeaderField: "Authorization")
                 postRequest.httpMethod = "POST"
                 postRequest.httpBody = imageData
-                
                 let uploadSession = URLSession.shared
-                let executePostRequest = uploadSession.dataTask(with: postRequest as URLRequest) { (data, response, error) -> Void in
-                    if let response = response as? HTTPURLResponse
-                    {
-                        print(response.statusCode)
-                    }
-                    if let data = data
-                    {
-                        do {
-                            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                            let json2 = json["data"] as! [String: Any]
-                            let imageUrl = json2["link"] as! String
-                            let uploadUrlString = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/receipt/uploadreceipt?url=" + imageUrl
-                            guard let uploadUrl = URL(string: uploadUrlString) else { return}
-                            let session = URLSession.shared
-                            
-                            session.dataTask(with: uploadUrl){(data,response,error) in
-                                if let data = data{
-                                    do {
-                                        let json = try  JSONSerialization.jsonObject(with: data, options: []) as! NSArray
-                                        self.receiptData = json
-                                        if self.receiptData?.count != 0 {
-                                            DispatchQueue.main.async {
-                                                self.performSegue(withIdentifier: "ReceiptDetailSegue", sender: nil)
-                                                self.stopProcessing()
-                                            }
-                                        }
-                                        else {
-                                             DispatchQueue.main.async {
-                                                let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
-                                                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-                                                self.present(alert, animated: true)
-                                                self.stopProcessing()
-                                            }
-                                        }
-                                    }
-                                    catch{
-                                        DispatchQueue.main.async {
-                                            let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
-                                            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-                                            self.present(alert, animated: true)
-                                            self.stopProcessing()
-                                        }
-                                    }
-                                }
-                                }.resume()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 20.0, execute: {
+                    if self.receiptData == nil {
+                        if !self.checkWiFi() {
+                            let alert = UIAlertController(title: "Disconnection", message: "Your device is disconnected.\r\nplease try to login again", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
+                                self.navigationController?.dismiss(animated: false, completion: nil)
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                            return
                         }
-                        catch {
+                        DispatchQueue.main.async {
+                            self.timeOut = true
+                            let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                            self.present(alert, animated: true)
+                            self.stopProcessing()
+                            return
+                        }
+                    }
+                    else {
+                        self.receiptData = nil
+                    }
+                })
+                let executePostRequest = uploadSession.dataTask(with: postRequest as URLRequest) { (data, response, error) -> Void in
+                    if data != nil && !self.timeOut
+                    {
+                        if error != nil {
                             DispatchQueue.main.async {
                                 let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
                                 self.present(alert, animated: true)
                                 self.stopProcessing()
+                                self.timeOut = false
                             }
                         }
+                        else
+                        {
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
+                                let json2 = json["data"] as! [String: Any]
+                                let imageUrl = json2["link"] as! String
+                                let uploadUrlString = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/receipt/uploadreceipt?url=" + imageUrl + "&uid=" + String(self.currentUser!.userId!)
+                                guard let uploadUrl = URL(string: uploadUrlString) else { return}
+                                let session = URLSession.shared
+                                
+                                session.dataTask(with: uploadUrl){(data,response,error) in
+                                    if data != nil && !self.timeOut {
+                                        do {
+                                            if String(data: data!, encoding: .utf8)!.contains("errorMessage") {
+                                                DispatchQueue.main.async {
+                                                    let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
+                                                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                                                    self.present(alert, animated: true)
+                                                    self.stopProcessing()
+                                                    self.timeOut = false
+                                                }
+                                                return
+                                            }
+                                            else {
+                                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
+                                                self.receiptData = json
+                                                if self.receiptData?.count != 0 {
+                                                    DispatchQueue.main.async {
+                                                        self.performSegue(withIdentifier: "ReceiptDetailSegue", sender: nil)
+                                                        self.stopProcessing()
+                                                        self.timeOut = false
+                                                    }
+                                                }
+                                                else {
+                                                    DispatchQueue.main.async {
+                                                        let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
+                                                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                                                        self.present(alert, animated: true)
+                                                        self.stopProcessing()
+                                                        self.timeOut = false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        catch{
+                                            DispatchQueue.main.async {
+                                                let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
+                                                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                                                self.present(alert, animated: true)
+                                                self.stopProcessing()
+                                                self.timeOut = false
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        self.timeOut = false
+                                        return
+                                    }
+                                    }.resume()
+                            }
+                            catch {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                                    self.present(alert, animated: true)
+                                    self.stopProcessing()
+                                    self.timeOut = false
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        self.timeOut = false
+                        return
                     }
                 }
                 executePostRequest.resume()
@@ -707,7 +763,12 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
                 catch{
-                    print(error)
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                        self.stopProcessing()
+                    }
                 }
             }
             }.resume()
@@ -718,6 +779,7 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        processing.transform = CGAffineTransform(scaleX: 2, y: 2)
         self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 2.0
@@ -777,6 +839,26 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
         This method is to start the process animation.
      */
     func startProcessing() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                DispatchQueue.main.async {
+                    if !self.checkWiFi() {
+                        let alert = UIAlertController(title: "Disconnection", message: "Your device is disconnected.\r\nplease try to login again", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
+                            self.navigationController?.dismiss(animated: false, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    }
+                }
+        })
+        if !self.checkWiFi() {
+            let alert = UIAlertController(title: "Disconnection", message: "Your device is disconnected.\r\nplease try to login again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(UIAlertAction) -> Void in
+                self.navigationController?.dismiss(animated: false, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         self.view.isUserInteractionEnabled = false
         self.tabBarController?.view.isUserInteractionEnabled = false
         self.tableView.isHidden = true
@@ -819,7 +901,12 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
                     tabBar.categoryList = self.categoryList
                 }
                 catch{
-                    print(error)
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Fail To Read Receipt", message: "Please try agian.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                        self.stopProcessing()
+                    }
                 }
             }
             }.resume()
@@ -941,5 +1028,33 @@ extension UIViewController{
                 }
             }
             }.resume()
+    }
+}
+
+extension UIImage {
+    func resizeImage(_ newSize: CGSize) -> UIImage? {
+        func isSameSize(_ newSize: CGSize) -> Bool {
+            return size == newSize
+        }
+        
+        func scaleImage(_ newSize: CGSize) -> UIImage? {
+            func getScaledRect(_ newSize: CGSize) -> CGRect {
+                let ratio   = max(newSize.width / size.width, newSize.height / size.height)
+                let width   = size.width * ratio
+                let height  = size.height * ratio
+                return CGRect(x: 0, y: 0, width: width, height: height)
+            }
+            
+            func _scaleImage(_ scaledRect: CGRect) -> UIImage? {
+                UIGraphicsBeginImageContextWithOptions(scaledRect.size, false, 0.0);
+                draw(in: scaledRect)
+                let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+                UIGraphicsEndImageContext()
+                return image
+            }
+            return _scaleImage(getScaledRect(newSize))
+        }
+        
+        return isSameSize(newSize) ? self : scaleImage(newSize)!
     }
 }
