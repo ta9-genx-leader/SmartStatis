@@ -27,7 +27,7 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
             return
         }
         selectedNumberForMemebr = memberPickerIndex
-        tabBar?.selectedNumberForMemebr = self.selectedNumberForMemebr!
+        //tabBar?.selectedNumberForMemebr = self.selectedNumberForMemebr!
         popUp.removeFromSuperview()
         self.tableView.isUserInteractionEnabled = true
         let defaults = UserDefaults.standard
@@ -195,35 +195,36 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
             self.present(alert, animated: true, completion: nil)
             return
         }
-        self.tableView.isUserInteractionEnabled = false
-        switch reportCell?.tagTitle.text {//cell.tagTitle.text = "Average Waste\r\n(4up People)"
-        case "Average Waste\r\n(1 Person)":
-            popUpTextField.text = "1 Person"
-            memberPickerIndex = 0
-        case "Average Waste\r\n(2 People)":
-            popUpTextField.text = "2 People"
-            memberPickerIndex = 1
-        case "Average Waste\r\n(3 People)":
-            popUpTextField.text = "3 People"
-            memberPickerIndex = 2
-        case "Average Waste\r\n(4 People)":
-            popUpTextField.text = "4 People"
-            memberPickerIndex = 3
-        default:
-            popUpTextField.text = "More than 4 people"
-            memberPickerIndex = 4
-        }
-        popUpPickerView.selectRow(memberPickerIndex, inComponent: 0, animated: false)
-        self.view.addSubview(popUp)
-        dismissPopOverWhenTappedAround()
-        popUp.center = self.view.center
-        popUp.clipsToBounds = true
-        popUp.layer.backgroundColor = UIColor.white.cgColor
-        popUp.layer.masksToBounds = false
-        popUp.layer.cornerRadius = 10.0
-        popUp.layer.shadowOffset = CGSize(width: -1, height: 1)
-        popUp.layer.shadowOpacity = 0.4
-        popUp.layer.shadowRadius = 2
+        performSegue(withIdentifier: "ProgressSegue", sender: self)
+//        self.tableView.isUserInteractionEnabled = false
+//        switch reportCell?.tagTitle.text {//cell.tagTitle.text = "Average Waste\r\n(4up People)"
+//        case "Average Waste\r\n(1 Person)":
+//            popUpTextField.text = "1 Person"
+//            memberPickerIndex = 0
+//        case "Average Waste\r\n(2 People)":
+//            popUpTextField.text = "2 People"
+//            memberPickerIndex = 1
+//        case "Average Waste\r\n(3 People)":
+//            popUpTextField.text = "3 People"
+//            memberPickerIndex = 2
+//        case "Average Waste\r\n(4 People)":
+//            popUpTextField.text = "4 People"
+//            memberPickerIndex = 3
+//        default:
+//            popUpTextField.text = "More than 4 people"
+//            memberPickerIndex = 4
+//        }
+//        popUpPickerView.selectRow(memberPickerIndex, inComponent: 0, animated: false)
+//        self.view.addSubview(popUp)
+//        dismissPopOverWhenTappedAround()
+//        popUp.center = self.view.center
+//        popUp.clipsToBounds = true
+//        popUp.layer.backgroundColor = UIColor.white.cgColor
+//        popUp.layer.masksToBounds = false
+//        popUp.layer.cornerRadius = 10.0
+//        popUp.layer.shadowOffset = CGSize(width: -1, height: 1)
+//        popUp.layer.shadowOpacity = 0.4
+//        popUp.layer.shadowRadius = 2
     }
     
     /*
@@ -293,6 +294,7 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MonthCell", for: indexPath) as! MonthCell
             self.monthTextField = cell.monthTextField
+            self.monthTextField?.tintColor = UIColor.clear
             let currentMonth = Calendar.current.date(byAdding: .month, value: 0, to: selectedDate)?.toString(dateFormat: "MMM yyyy")
             monthTextField!.text = currentMonth
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -328,13 +330,17 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             switch indexPath.row {
             case 0:
+                cell.tagValue.isHidden = false
                 cell.tagValue.text = "$" + String(format:"%.2f", totalPrice)
                 cell.tagValue.textColor = UIColor.blue
                 cell.tagTitle.text = "Total Expenditure"
+                cell.leftArrow.isHidden = false
             case 1:
                 wasteCell = cell
+                cell.tagValue.isHidden = false
                 cell.tagValue.text = "$" + String(format:"%.2f", wastePrice)
                 cell.tagTitle.text = "Total Waste"
+                cell.leftArrow.isHidden = false
             default:
                 var aust = 0.0
                 switch selectedNumberForMemebr {
@@ -355,20 +361,9 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 else {
                     wasteCell!.tagValue.textColor = UIColor.blue
                 }
-                cell.tagValue.text = "$" + String(format:"%.2f", aust)
-                cell.tagValue.textColor = UIColor.blue
-                switch selectedNumberForMemebr {
-                case 0:
-                    cell.tagTitle.text = "Average Waste\r\n(1 Person)"
-                case 1:
-                    cell.tagTitle.text = "Average Waste\r\n(2 People)"
-                case 2:
-                    cell.tagTitle.text = "Average Waste\r\n(3 People)"
-                case 3:
-                    cell.tagTitle.text = "Average Waste\r\n(4 People)"
-                default:
-                    cell.tagTitle.text = "Average Waste\r\n(4 up People)"
-                }
+                cell.leftArrow.isHidden = true
+                cell.tagValue.isHidden = true
+                cell.tagTitle.text = "Compare Cost"
                 self.reportCell = cell
             }
             if cell.tagView.subviews.count < 3 {
@@ -426,6 +421,7 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
             }
             cell.progressButtonOutlet.addShadowToButton(cornerRadius: 5)
             cell.progressButtonOutlet.backgroundColor = UIColor(red: 1/255, green: 150/255, blue: 63/255, alpha: 1.0)
+            cell.progressButtonOutlet.isHidden = true
             return cell
         }
     }
@@ -538,6 +534,8 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
         else if segue.identifier == "ProgressSegue" {
             let controller: LineChartController = segue.destination as! LineChartController
             controller.personReport = self.personReport
+            controller.tabBar = self.tabBar
+            controller.numberOfMember = self.numberOfMember
             var list = [String]()
             var firstTotalFood = 0.0
             var secondTotalFood = 0.0

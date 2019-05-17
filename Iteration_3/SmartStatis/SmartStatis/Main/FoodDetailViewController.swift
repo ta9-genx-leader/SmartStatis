@@ -62,12 +62,12 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
         }
         else {
             let quantity = quantityNumberTextfield.text! + "_" + quantityUnit.text!
-            self.addNewFoodWithQuantity(userId: String(uid! as Int), cateId: String(food?.categoryId! as! Int), locationId: "5", foodName: food!.foodName!, start: (food?.start?.toString(dateFormat: "yyyy-MM-dd"))!, price: "-1", expire: (food?.expire?.toString(dateFormat: "yyyy-MM-dd"))!, quantity: quantity)
+            self.addNewFoodWithQuantity(userId: String(uid! as Int), cateId: String(food!.categoryId! as Int), locationId: "5", foodName: food!.foodName!, start: (food!.start!.toString(dateFormat: "yyyy-MM-dd")), price: "-1", expire: (food!.expire!.toString(dateFormat: "yyyy-MM-dd")), quantity: quantity)
              let alert = UIAlertController(title: "Item Added", message: "Successfully Added to Plan", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Manage your plan", style: .default, handler: { [weak alert] (_) in
+            alert.addAction(UIAlertAction(title: "Manage your plan", style: .default, handler: {(_) in
                 self.checkShopPlan()
             }))
-            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak alert] (_) in
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
                 self.dismiss(animated: true, completion: nil)
             }))
             self.present(alert, animated: true , completion: dismissPopOver)
@@ -345,7 +345,7 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                 let convert = DateConverter()
                 editable = false
                 if editPrice?.text != nil {
-                    food?.price = Double(editPrice?.text as! String)
+                    food?.price = Double(editPrice!.text! as String)
                 }
                 if editName?.text != nil {
                     food?.foodName = editName?.text
@@ -375,13 +375,13 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                 food?.start = convert.dateFormatterWithRule(dateString: editBuyDate!.text!, rule: "yyyy-MM-dd")
                 food?.expire = convert.dateFormatterWithRule(dateString: (editExpireDate?.text)!, rule: "yyyy-MM-dd")
                 food?.locationId = editSegment!.selectedSegmentIndex + 2
-                let lid =  food!.locationId as! Int
+                let lid =  food!.locationId! as Int
                 let priceString = (editPrice?.text)! as String
                 updateFood(foodId: (food?.foodId)!, foodName: food!.foodName!, foodBuy: (editBuyDate?.text)!, foodExpire: (editExpireDate?.text)!, foodPrice: priceString, category: String((food?.categoryId)!), location: String(lid))
                 updateFoodLocatition(foodId: (food?.foodId)!, location: editSegment!.selectedSegmentIndex + 2)
                 delegate?.foodDetail(edit: true, food: food)
                 let alert = UIAlertController(title: "Saved", message: "Food Successfully Updated", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak alert] (_) in
+                alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(_) in
                     self.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
@@ -399,7 +399,7 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
              popOverView.layer.shadowRadius = 2
         default:
             //buy button
-            self.addNewFood(userId: String(uid! as Int), cateId: String(food?.categoryId! as! Int), locationId: "5", foodName: food!.foodName!, start: (food?.start?.toString(dateFormat: "yyyy-MM-dd"))!, price: "-1", expire: (food?.expire?.toString(dateFormat: "yyyy-MM-dd"))!)
+            self.addNewFood(userId: String(uid! as Int), cateId: String(food!.categoryId! as Int), locationId: "5", foodName: food!.foodName!, start: (food!.start!.toString(dateFormat: "yyyy-MM-dd")), price: "-1", expire: (food!.expire!.toString(dateFormat: "yyyy-MM-dd")))
             let alert = UIAlertController(title: "Item Added", message: "Successfully Added to Plan", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -555,7 +555,7 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         if indexPath.section == 0 {
-            return 80
+            return 72
         }
         return 60
     }
@@ -575,7 +575,9 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                 editBuyDate = cell.buyDate
                 editExpireDate = cell.expireDate
                 cell.buyDate.text = dateConvert.dateConvertString(date: (food?.start)!)
+                cell.buyDate.tintColor = UIColor.clear
                 cell.expireDate.text = dateConvert.dateConvertString(date: (food?.expire)!)
+                cell.expireDate.tintColor = UIColor.clear
                 if editable == false {
                     cell.buyDate.borderStyle = .none
                     cell.expireDate.borderStyle = .none
@@ -630,6 +632,7 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! FoodDetailCell
+                cell.foodCategory.tintColor = UIColor.clear
                 switch food?.categoryId {
                 case 1:
                     cell.foodCategory.text = "Meat"
@@ -750,7 +753,9 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                 editBuyDate = cell.buyDate
                 editExpireDate = cell.expireDate
                 cell.buyDate.text = dateConvert.dateConvertString(date: (food?.start)!)
+                cell.buyDate.tintColor = UIColor.clear
                 cell.expireDate.text = dateConvert.dateConvertString(date: (food?.expire)!)
+                cell.expireDate.tintColor = UIColor.clear
                 if editable == false {
                     cell.buyDate.borderStyle = .none
                     cell.expireDate.borderStyle = .none
@@ -805,6 +810,7 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! FoodDetailCell
+                cell.foodCategory.tintColor = UIColor.clear
                 switch food?.categoryId {
                 case 1:
                     cell.foodCategory.text = "Meat"
@@ -826,14 +832,6 @@ class FoodDetailViewController: UIViewController ,UITableViewDelegate, UITableVi
                     cell.foodCategory.text = "Protein"
                 default:
                     cell.foodCategory.text = "Other"
-                }
-                var index = 0
-                var selectedIndex: Int?
-                for i in categoryList! {
-                    if i == cell.foodCategory.text {
-                        selectedIndex = index
-                    }
-                    index = index + 1
                 }
                 pickerView.selectRow(food!.categoryId!-1, inComponent: 0, animated: false)
                 if editable == false {

@@ -170,7 +170,7 @@ class ReceiptTableController: UITableViewController,FoodDetailDelegate {
                     }
                     let alertMessage = fridgeMessage + freezerMessage + pantryMessage
                     let alert = UIAlertController(title: "Receipt Saved", message: alertMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak alert] (_) in
+                    alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(_) in
                         self.saveComplete()
                     }))
                     self.present(alert, animated: true , completion: nil)

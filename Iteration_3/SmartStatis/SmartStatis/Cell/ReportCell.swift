@@ -14,6 +14,7 @@ class ReportCell: UITableViewCell {
 
     @IBOutlet var tagValueView: UIView!
     @IBOutlet var tagValue: UILabel!
+    @IBOutlet var leftArrow: UIImageView!
     @IBOutlet var tagTitle: UILabel!
     @IBOutlet var tagView: UIView!
     override func awakeFromNib() {

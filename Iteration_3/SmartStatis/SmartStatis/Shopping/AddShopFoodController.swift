@@ -83,7 +83,7 @@ class AddShopFoodController: UIViewController,UITableViewDelegate, UITableViewDa
                 let newFood = Food(foodId: nextFoodId, userId: uid, categoryId: cid, locationId: 5, foodName: name, start: Date(), expire: Date(), price: -1, quantity: qty, completion: -2, keyword: "")
                 addNewFoodWithQuantity(userId: String(newFood.userId!), cateId: String(newFood.categoryId!), locationId: "5", foodName: newFood.foodName!, start: (newFood.start?.toString(dateFormat: "yyyy-MM-dd"))!, price: "-1", expire: (newFood.expire?.toString(dateFormat: "yyyy-MM-dd"))!, quantity: newFood.quantity!)
                 let alert = UIAlertController(title: "Added", message: "Plan Successfully Added", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:  { [weak alert] (_) in
+                alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:  {(_) in
                     self.addDelegate?.foodShopDetail(edit: true, food: newFood)
                     self.dismiss(animated: true, completion: nil)
                 }))
@@ -118,6 +118,7 @@ class AddShopFoodController: UIViewController,UITableViewDelegate, UITableViewDa
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == categoryPickerView {
             cellList[2].foodCategory.text = categoryList![row]
+            cellList[2].foodCategory.tintColor = UIColor.clear
             switch categoryList![row] {
             case "Meat":
                 cellList[0].categoryImage.image = UIImage(named: "Meat-50px")

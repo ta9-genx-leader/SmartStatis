@@ -70,7 +70,7 @@ class TabBarViewController: UITabBarController {
      */
     func loadData() {
         shopping = [Food]()
-        let userId = currentUser!.userId as! Int
+        let userId = currentUser!.userId! as Int
         let foodURL = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/food/getshoppingfoodbyuid?id=" + String(userId)
         guard let url = URL(string: foodURL) else { return}
         let session = URLSession.shared

@@ -702,7 +702,7 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
         let tabBar = tabBarController as! TabBarViewController
         nextFoodId = tabBar.nextFoodId
         self.currentUser = tabBar.currentUser
-        let userId = currentUser!.userId as! Int
+        let userId = currentUser!.userId! as Int
         let foodURL = "https://h3tqwthvml.execute-api.us-east-2.amazonaws.com/project/food/getfoodbyuid?id=" + String(userId)
         guard let url = URL(string: foodURL) else { return}
         let session = URLSession.shared
@@ -721,7 +721,7 @@ class HomePageController: UIViewController, UITableViewDelegate, UITableViewData
                             keyword = food["keyword"] as! String
                         }
                         var oneFood: Food?
-                        if keyword != nil {
+                        if keyword != "" {
                             oneFood = Food(foodId: food["foodid"] as? Int, userId: food["uid"] as? Int, categoryId: food["cid"] as? Int, locationId: food["lid"] as? Int, foodName: food["foodname"] as? String, start: formatter.dateFormatter(dateString: food["startdate"] as! String) , expire: expire,price: food["price"] as? Double, quantity: "0", completion: food["complete_Percent"] as? Int, keyword: keyword)
                         }
                         else {
@@ -1056,5 +1056,40 @@ extension UIImage {
         }
         
         return isSameSize(newSize) ? self : scaleImage(newSize)!
+    }
+}
+
+extension UIButton{
+    
+    func addShadowToButton(color: UIColor = UIColor.gray, cornerRadius: CGFloat) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowOpacity = 0.5
+        self.layer.cornerRadius = cornerRadius
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension UITextField {
+    func addShadowToTextField(color: UIColor = UIColor.gray, cornerRadius: CGFloat) {
+        self.backgroundColor = UIColor.white
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowOpacity = 0.3
+        self.backgroundColor = .white
+        self.layer.cornerRadius = cornerRadius
     }
 }

@@ -187,7 +187,9 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! FoodDetailCell
             categoryImage = cell.categoryImage
             editBuyDate = cell.buyDate
+            editBuyDate?.tintColor = UIColor.clear
             editExpireDate = cell.expireDate
+            editExpireDate?.tintColor = UIColor.clear
             if editBuyDate?.text?.count == 0 {
                 editBuyDate?.text = dateConvert.dateConvertString(date: Date())
             }
@@ -204,6 +206,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! FoodDetailCell
             editCategory = cell.foodCategory
+            editCategory?.tintColor = UIColor.clear
             let toolBar = UIToolbar()
             toolBar.sizeToFit()
             let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissEditView))

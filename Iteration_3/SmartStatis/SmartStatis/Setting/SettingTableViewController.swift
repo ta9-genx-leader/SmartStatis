@@ -21,6 +21,7 @@ class SettingTableViewController: UITableViewController,UIPickerViewDataSource, 
     @IBOutlet var hourTextField: UITextField!
     @IBOutlet var minuteTextField: UITextField!
     @IBOutlet var confirmButton: UIButton!
+    
     @IBAction func confirmButtonAction(_ sender: Any) {
         let hourValue = Int(hourTextField.text!)
         let minuteValue = Int(minuteTextField.text!)
@@ -93,11 +94,11 @@ class SettingTableViewController: UITableViewController,UIPickerViewDataSource, 
         confirmButton.backgroundColor = UIColor(red: 1/255, green: 150/255, blue: 63/255, alpha: 1.0)
         confirmButton.addShadowToButton(cornerRadius: 5)
         tabBar = tabBarController as? TabBarViewController
-        var hourDefault = String(tabBar?.hour as! Int)
+        var hourDefault = String(tabBar!.hour as Int)
         if tabBar!.hour < 10 {
             hourDefault = "0" + hourDefault
         }
-        var minuteDefault = String(tabBar?.minute as! Int)
+        var minuteDefault = String(tabBar!.minute as Int)
         if tabBar!.minute < 10 {
             minuteDefault = "0" + minuteDefault
         }
