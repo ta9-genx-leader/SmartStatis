@@ -73,3 +73,4 @@ Iteration 3:
   
   v3-1-3 Algoriths for receipts changed
 
+  v3-1-4 Add Timeout functions for Https response
