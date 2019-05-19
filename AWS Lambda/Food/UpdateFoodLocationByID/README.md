@@ -1,6 +1,6 @@
-# UpdateFoodByID package
+# UpdateFoodLocationByID package
 
-  The script is to update the food by its food ID.
+  The script is to update the food location by its food ID.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -51,17 +51,7 @@
 
 9.1 id
 
-9.2 name
-
-9.3 buy
-
-9.4 expire
-
-9.5 price
-
-9.6 location
-
-9.7 category
+9.2 lid
 
 ### 10. Modify the Body Mappin Template in Integration Request section
 
@@ -71,12 +61,7 @@
 
 {
     "id" : "$input.params('id')",
-    "name": "$input.params('name')",
-    "buy": "$input.params('buy')",
-    "expire": "$input.params('expire')",
-    "price": "$input.params('price')",
-    "category": "$input.params('category')",
-    "location": "$input.params('location')"
+    "lid": "$input.params('lid')"
 }
 
 ### 11. Deploy the resource
