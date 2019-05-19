@@ -15,24 +15,35 @@ Function:
   2. Create a Lambda function on AWS
   3. Select the language as Python 3.6
   4. Upload ocrwithremove.zip file
-  5. Change the handler name to the python script name and the function name in the zip file, lambda_funtion.lambda_handler
+  5. Change the handler name to the python script name and the function name, lambda_funtion.lambda_handler
   6. Configure a test event
        {"url1":""}
 # Python script Setting
    
    Change MySQL account 
-   #rds settings
+   
    rds_host  = " "
+   
    name = " "
+   
    password =" "
+   
    db_name = " "
    
+   
    Change baidu aip ocr account
+   
    baidu aip library setting
+   
    APP_ID = ' '
+   
    API_KEY = ' '
+   
    SECRET_KEY = ' '
+   
    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
+   
+   
    
 
 
