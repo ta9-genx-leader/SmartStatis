@@ -22,18 +22,18 @@ Function:
    
    Change MySQL account 
    #rds settings
-   `rds_host  = " "
+   rds_host  = " "
    name = " "
    password =" "
    db_name = " "
-   `
+   
    Change baidu aip ocr account
    baidu aip library setting
-   `APP_ID = ' '
+   APP_ID = ' '
    API_KEY = ' '
    SECRET_KEY = ' '
    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
-   `
+   
 
 
 
