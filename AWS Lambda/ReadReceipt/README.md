@@ -27,8 +27,10 @@ Function:
   4. Upload ocrwithremove.zip file
   5. Change the handler name to the python script name and the function name, lambda_funtion.lambda_handler
   6. Configure a test event
-  
-       {"url1":""}
+   
+       {"url1": "https://upload.wikimedia.org/wikipedia/commons/1/13/Receipt-woolworth.jpg",
+       
+        "uid": 123}
        
 # Python script Setting
    
@@ -58,7 +60,9 @@ Function:
    
    
 
-# Example of output
+# Example of output 
+  use url link "https://upload.wikimedia.org/wikipedia/commons/1/13/Receipt-woolworth.jpg"
+  
   [
   {
     "Item": " wWW SANDWICH CLASSIC EGG LETTUCE",
