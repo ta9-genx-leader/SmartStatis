@@ -58,5 +58,35 @@ Function:
    
    
 
-
+# Example of output
+  [
+  {
+    "Item": " wWW SANDWICH CLASSIC EGG LETTUCE",
+    "price": 6,
+    "expiry days": 6,
+    "keyword": "sandwich egg lettuce",
+    "category": "vegetable"
+  },
+  {
+    "Item": " APPLE PINK LADY",
+    "price": 0.85,
+    "keyword": "apple",
+    "expiry days": 5,
+    "category": "fruit"
+  },
+  {
+    "Item": " MACRO ORGANC FRESH MILK LOW FAT 1L",
+    "price": 2.2,
+    "expiry days": 8,
+    "keyword": "milk fat",
+    "category": "dairy"
+  },
+  {
+    "Item": " BANANA CAVENDISH",
+    "price": 1.43,
+    "keyword": "banana",
+    "expiry days": 5,
+    "category": "fruit"
+  }
+]
 
