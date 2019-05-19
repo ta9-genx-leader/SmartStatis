@@ -1,4 +1,7 @@
-# Read receipts
+# ReadReceipts
+
+ocrwithremove.zip contains a python script, baidu aip library, pymysql library which could run on AWS Lambda to read receipt image.
+
 Function:
 1. Use baidu-aip ocr library to analysis the image url
 2. Select the food items from the image 
@@ -17,7 +20,9 @@ Function:
   4. Upload ocrwithremove.zip file
   5. Change the handler name to the python script name and the function name, lambda_funtion.lambda_handler
   6. Configure a test event
+  
        {"url1":""}
+       
 # Python script Setting
    
    Change MySQL account 
