@@ -1,6 +1,6 @@
-# UpdateFoodPrice package
+# UpdateQuantityByID package
 
-  The script is to update the price for the food by food ID.
+  The script is to update the quantity for the food by its food ID.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -51,7 +51,7 @@
 
 9.1 id
 
-9.2 price
+9.2 quantity
 
 ### 10. Modify the Body Mappin Template in Integration Request section
 
@@ -61,7 +61,7 @@
 
 {
     "id" : "$input.params('id')",
-    "price": "$input.params('price')"
+    "quantity" : "$input.params('quantity')"
 }
 
 ### 11. Deploy the resource
