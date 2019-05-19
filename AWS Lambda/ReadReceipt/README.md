@@ -9,10 +9,17 @@ Function:
 
 # Development platform
   Python 3.6/AWS Lambda
-# Application System
-  IOS
 # Database system
   MySQL
+# Library required
+  baidu-aip
+  
+  pymysql
+  
+  requests
+  
+  time
+  
 # Installation 
   1. Download ocrwithremove.zip and save it to your destination.
   2. Create a Lambda function on AWS
