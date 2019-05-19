@@ -1,8 +1,8 @@
-# GetAllUser package
+# GetUserByEmailAndPassword package
 
-  The script is to get all the user from the MySQL database.
+  The script is to get the user's detail by given email and password from the database.
   
-  In order to config the package properly, please download the file named "getAllUser.zip" from this folder.
+  In order to config the package properly, please download the file named "GetUserByEmailAndPassword.zip" from this folder.
 
   Moreover, you need to moditfy the content of the file according to the detail of your hosted database.
   
@@ -41,13 +41,33 @@
 
 ### 5.Upload the zip file into the AWS Lambda function 
 
-### 6.choose NodeJS as the compiling language.
+### 6.Choose NodeJS as the compiling language.
 
 ### 7.Change the Handler from "index.handler" to "main.handler"
 
 ### 8.Deploy the AWS Lambda function to API Gateway
 
+### 9.Add URL Query String parameters into th API with the following attributes
+
+9.1 email
+
+9.2 password
+
+### 10. Modify the Body Mappin Template in Integration Request section
+
+10-1 Set the content type to "Application/json"
+
+10-2 Add the following code into the below block
+
+{
+    "email" : "$input.params('email')",
+    "password" : "$input.params('password')"
+}
+
+### 11. Deploy the resource
+
 # Tutorial resource
+
 For more details on how to create AWS Lambda function and AWS API Gateway, please clink the links below
 
 [Create AWS Lambda Function](https://docs.aws.amazon.com/en_us/lambda/latest/dg/getting-started.html)
