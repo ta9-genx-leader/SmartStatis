@@ -36,25 +36,24 @@ Function:
 # Python script Setting
    
    Change MySQL account 
+   rds_host  = YOUR ENDPOINT & PORT IN AWS RDS INSTANCE,
    
-   rds_host  = " "
+   name = ROOT USER NAME
    
-   name = " "
+   password =ROOT USER PASSWORD
    
-   password =" "
-   
-   db_name = " "
+   db_name = YOUR INSTANCE NAME
    
    
    Change baidu aip ocr account
    
    baidu aip library setting
    
-   APP_ID = ' '
+   APP_ID = YOUR BAIDU-AIP ID
    
-   API_KEY = ' '
+   API_KEY = YOUR BAIDU-AIP KEY
    
-   SECRET_KEY = ' '
+   SECRET_KEY = YOUR BAIDU-AIP SECRET KEY
    
    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
    
