@@ -1,6 +1,6 @@
-# AddUser package
+# GetFoodByUID package
 
-  The script is to insert a new user into the database.
+  The script is to get al the food for the given user from the database.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -49,13 +49,7 @@
 
 ### 9.Add URL Query String parameters into th API with the following attributes
 
-9.1 email
-
-9.2 firstname
-
-9.3 lastname
-
-9.4 password
+9.1 id
 
 ### 10. Modify the Body Mappin Template in Integration Request section
 
@@ -64,10 +58,7 @@
 10-2 Add the following code into the below block
 
 {
-  "firstname": "$input.params('firstname')",
-  "lastname": "$input.params('lastname')",
-  "email": "$input.params('email')",
-  "password" : "$input.params('password')"
+    "id" : "$input.params('id')"
 }
 
 ### 11. Deploy the resource
