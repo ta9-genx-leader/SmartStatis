@@ -1,6 +1,6 @@
-# AddFood package
+# AddFoodWithQuantity package
 
-  The script is to insert a new food into the database.
+  The script is to insert a new food with its quantity into the database.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -63,6 +63,8 @@
 
 9.7 price
 
+9.8 quantity
+
 ### 10. Modify the Body Mappin Template in Integration Request section
 
 10-1 Set the content type to "Application/json"
@@ -76,7 +78,8 @@
     "name" : "$input.params('name')",
     "start" : "$input.params('start')",
     "price" : "$input.params('price')",
-    "expire" : "$input.params('expire')"
+    "expire" : "$input.params('expire')",
+    "quantity": "$input.params('quantity')"
 }
 
 ### 11. Deploy the resource
