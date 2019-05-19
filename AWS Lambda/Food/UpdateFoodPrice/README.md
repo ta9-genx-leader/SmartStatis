@@ -1,6 +1,6 @@
-# UpdateFoodCompletion package
+# UpdateFoodPrice package
 
-  The script is to update the completion for the food by food ID.
+  The script is to update the price for the food by food ID.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -51,7 +51,7 @@
 
 9.1 id
 
-9.2 completion
+9.2 price
 
 ### 10. Modify the Body Mappin Template in Integration Request section
 
@@ -61,7 +61,7 @@
 
 {
     "id" : "$input.params('id')",
-    "completion": "$input.params('completion')"
+    "price": "$input.params('price')"
 }
 
 ### 11. Deploy the resource
