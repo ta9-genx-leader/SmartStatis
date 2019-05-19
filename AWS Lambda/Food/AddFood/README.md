@@ -1,6 +1,6 @@
-# AddUser package
+# AddFood package
 
-  The script is to insert a new user into the database.
+  The script is to insert a new food into the database.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -49,13 +49,19 @@
 
 ### 9.Add URL Query String parameters into th API with the following attributes
 
-9.1 email
+9.1 cid
 
-9.2 firstname
+9.2 uid
 
-9.3 lastname
+9.3 lid
 
-9.4 password
+9.4 name
+
+9.5 start
+
+9.6 expire
+
+9.7 price
 
 ### 10. Modify the Body Mappin Template in Integration Request section
 
@@ -64,10 +70,13 @@
 10-2 Add the following code into the below block
 
 {
-  "firstname": "$input.params('firstname')",
-  "lastname": "$input.params('lastname')",
-  "email": "$input.params('email')",
-  "password" : "$input.params('password')"
+    "uid" : "$input.params('uid')",
+    "cid" : "$input.params('cid')",
+    "lid" : "$input.params('lid')",
+    "name" : "$input.params('name')",
+    "start" : "$input.params('start')",
+    "price" : "$input.params('price')",
+    "expire" : "$input.params('expire')"
 }
 
 ### 11. Deploy the resource
