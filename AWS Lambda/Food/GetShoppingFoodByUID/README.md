@@ -1,6 +1,6 @@
-# GetFoodByUID package
+# GetShoppingFoodByUID package
 
-  The script is to get al the food for the given user from the database.
+  The script is to get all the food in the shopping list for the given user from the database.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
