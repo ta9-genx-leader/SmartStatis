@@ -1,6 +1,6 @@
-# GetFoodByUID package
+# DeleteFoodByID package
 
-  The script is to get al the food for the given user from the database.
+  The script is to delete the food by the given food ID from the database.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
