@@ -26,7 +26,8 @@ Function:
   3. Select the language as Python 3.6
   4. Upload ocrwithremove.zip file
   5. Change the handler name to the python script name and the function name, lambda_funtion.lambda_handler
-  6. Configure a test event
+  7. Change the Basic setting, set Timeout as 3 mins
+  8. Configure a test event
    
        {"url1": "https://upload.wikimedia.org/wikipedia/commons/1/13/Receipt-woolworth.jpg",
        
