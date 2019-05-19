@@ -1,6 +1,6 @@
-# AddFood package
+# UpdateFoodCompletion package
 
-  The script is to insert a new food into the database.
+  The script is to update the completion for the food by food ID.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -49,19 +49,9 @@
 
 ### 9.Add URL Query String parameters into th API with the following attributes
 
-9.1 cid
+9.1 id
 
-9.2 uid
-
-9.3 lid
-
-9.4 name
-
-9.5 start
-
-9.6 expire
-
-9.7 price
+9.2 completion
 
 ### 10. Modify the Body Mappin Template in Integration Request section
 
@@ -70,13 +60,8 @@
 10-2 Add the following code into the below block
 
 {
-    "uid" : "$input.params('uid')",
-    "cid" : "$input.params('cid')",
-    "lid" : "$input.params('lid')",
-    "name" : "$input.params('name')",
-    "start" : "$input.params('start')",
-    "price" : "$input.params('price')",
-    "expire" : "$input.params('expire')"
+    "id" : "$input.params('id')",
+    "completion": "$input.params('completion')"
 }
 
 ### 11. Deploy the resource
