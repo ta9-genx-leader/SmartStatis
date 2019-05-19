@@ -1,6 +1,6 @@
-# AddFood package
+# AddFoodWithIDAndKeyword package
 
-  The script is to insert a new food into the database.
+  The script is to insert a new food with its keyword into the database.
   
   In order to config the package properly, please download the file named "AddUser.zip" from this folder.
 
@@ -63,6 +63,10 @@
 
 9.7 price
 
+9.8 id
+
+9.9 keyword
+
 ### 10. Modify the Body Mappin Template in Integration Request section
 
 10-1 Set the content type to "Application/json"
@@ -70,13 +74,15 @@
 10-2 Add the following code into the below block
 
 {
+    "id" : "$input.params('id')",
     "uid" : "$input.params('uid')",
     "cid" : "$input.params('cid')",
     "lid" : "$input.params('lid')",
     "name" : "$input.params('name')",
     "start" : "$input.params('start')",
     "price" : "$input.params('price')",
-    "expire" : "$input.params('expire')"
+    "expire" : "$input.params('expire')",
+    "keyword": "$input.params('keyword')"
 }
 
 ### 11. Deploy the resource
