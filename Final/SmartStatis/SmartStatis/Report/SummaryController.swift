@@ -522,6 +522,7 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
             }
             controller.selectedBin = wasteFood
             controller.categoryList = categoryList
+            controller.segueName = "WasteSegue"
             controller.navigationItem.title = "Category"
         }
         else if segue.identifier == "TotalFoodSegue" {
@@ -529,6 +530,7 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
             controller.summary = self
             controller.selectedBin = selectedBin
             controller.categoryList = categoryList
+            controller.segueName = "TotalFoodSegue"
             controller.navigationItem.title = "Category"
         }
         else if segue.identifier == "ProgressSegue" {
@@ -552,10 +554,10 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 list.insert(date.toString(dateFormat: "MMM"), at: 0)
             }
             controller.monthList = list
-            let currentMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: 0, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
-            let lastMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: -1, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
-            let lastTwoMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: -2, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
-            let lastThreeMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: -3, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
+            let currentMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: 1, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
+            let lastMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: 0, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
+            let lastTwoMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: -1, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
+            let lastThreeMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: -2, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
             let lastFourMonth = convert.dateFormatterWithRule(dateString: (Calendar.current.date(byAdding: .month, value: -3, to: Date())?.toString(dateFormat: "MMM yyyy"))!, rule: "MMM yyyy")
             for food in tabBar!.bin! {
                 if food.expire! < currentMonth && food.expire! >= lastMonth {
@@ -573,16 +575,16 @@ class SummaryController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 
                 if food.completion != 100 {
                     if food.expire! < currentMonth && food.expire! >= lastMonth {
-                        firstFood = firstFood + food.price!
+                        firstFood = firstFood + food.price! * (100 - Double(food.completion!))/100
                     }
                     else if food.expire! < lastMonth && food.expire! >= lastTwoMonth {
-                        secondFood = secondFood + food.price!
+                        secondFood = secondFood + food.price! * (100 - Double(food.completion!))/100
                     }
                     else if food.expire! < lastTwoMonth && food.expire! >= lastThreeMonth {
-                        thirdFood = thirdFood + food.price!
+                        thirdFood = thirdFood + food.price! * (100 - Double(food.completion!))/100
                     }
                     else if food.expire! < lastThreeMonth && food.expire! >= lastFourMonth {
-                        fourthFood = fourthFood + food.price!
+                        fourthFood = fourthFood + food.price! * (100 - Double(food.completion!))/100
                     }
                 }
             }

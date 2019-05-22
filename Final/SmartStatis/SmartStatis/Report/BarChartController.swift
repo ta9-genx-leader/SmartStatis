@@ -11,6 +11,7 @@ import UIKit
     This controller is to manage the view for bar charts.
 */
 class BarChartController: UIViewController {
+    var segueName: String?
     var summary: UIViewController?
     var months: [String]!
     var categoryList : [String]?
@@ -43,30 +44,58 @@ class BarChartController: UIViewController {
         onePart = Double(frameWidth) / Double(100)
         
         NSLog("frame Width %i  One Part %d", frameWidth,onePart)
-        
-        for food in selectedBin! {
-            totalCost = totalCost + food.price!
-            switch food.categoryId {
-            case 1:
-                meatWaste = meatWaste + food.price!
-            case 2:
-                fruitWaste = fruitWaste + food.price!
-            case 3:
-                seafoodWaste = seafoodWaste + food.price!
-            case 4:
-                dairyWaste = dairyWaste + food.price!
-            case 5:
-                dairyProductWaste = dairyProductWaste + food.price!
-            case 6:
-                vegetableWaste = vegetableWaste + food.price!
-            case 7:
-                beverageWaste = beverageWaste + food.price!
-            case 8:
-                bakeryWaste = bakeryWaste + food.price!
-            case 9:
-                proteinWaste = proteinWaste + food.price!
-            default:
-                otherWaste = otherWaste + food.price!
+        if segueName == "TotalFoodSegue" {
+            for food in selectedBin! {
+                totalCost = totalCost + food.price!
+                switch food.categoryId {
+                case 1:
+                    meatWaste = meatWaste + food.price!
+                case 2:
+                    fruitWaste = fruitWaste + food.price!
+                case 3:
+                    seafoodWaste = seafoodWaste + food.price!
+                case 4:
+                    dairyWaste = dairyWaste + food.price!
+                case 5:
+                    dairyProductWaste = dairyProductWaste + food.price!
+                case 6:
+                    vegetableWaste = vegetableWaste + food.price!
+                case 7:
+                    beverageWaste = beverageWaste + food.price!
+                case 8:
+                    bakeryWaste = bakeryWaste + food.price!
+                case 9:
+                    proteinWaste = proteinWaste + food.price!
+                default:
+                    otherWaste = otherWaste + food.price!
+                }
+            }
+        }
+        else {
+            for food in selectedBin! {
+                totalCost = totalCost + food.price! * (100-Double(food.completion!))/100
+                switch food.categoryId {
+                case 1:
+                    meatWaste = meatWaste + food.price! * (100-Double(food.completion!))/100
+                case 2:
+                    fruitWaste = fruitWaste + food.price! * (100-Double(food.completion!))/100
+                case 3:
+                    seafoodWaste = seafoodWaste + food.price! * (100-Double(food.completion!))/100
+                case 4:
+                    dairyWaste = dairyWaste + food.price! * (100-Double(food.completion!))/100
+                case 5:
+                    dairyProductWaste = dairyProductWaste + food.price! * (100-Double(food.completion!))/100
+                case 6:
+                    vegetableWaste = vegetableWaste + food.price! * (100-Double(food.completion!))/100
+                case 7:
+                    beverageWaste = beverageWaste + food.price! * (100-Double(food.completion!))/100
+                case 8:
+                    bakeryWaste = bakeryWaste + food.price! * (100-Double(food.completion!))/100
+                case 9:
+                    proteinWaste = proteinWaste + food.price! * (100-Double(food.completion!))/100
+                default:
+                    otherWaste = otherWaste + food.price! * (100-Double(food.completion!))/100
+                }
             }
         }
         drawlines(lineNumber:1, percent:meatWaste/totalCost * 100, linename:"Meat")

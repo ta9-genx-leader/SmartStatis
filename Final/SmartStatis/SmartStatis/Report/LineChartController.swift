@@ -178,7 +178,6 @@ class LineChartController: UIViewController,UIPickerViewDataSource, UIPickerView
         lineChart.data?.setDrawValues(false)
         lineChart.scaleXEnabled = false
         lineChart.scaleYEnabled = false
-        
         lineChart.fitScreen()
         lineChart.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
     }
