@@ -82,4 +82,6 @@ Function:
 
   ### 1. Login view and Registration view
   
-  As we attempt to not require the user's information at the first stage when we introduc
+  As we attempt to not require the user's information at the first stage when we introduce Smartstatis, the Login view and Registration view are not added yet. However, in order to provide the better services to the users, creating a login view and a registration view can be beneficial. In order to integrate the login view and the registration view into the Smartstatis project, the developer must consider how to integrate the new features with the existing function. It is better that the developers integrate the login function and the registration function with the GuestViewController which is the first view representing to the users. Please refer to the following link for more information about GusetViewController.
+
+
