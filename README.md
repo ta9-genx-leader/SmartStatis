@@ -61,20 +61,20 @@ Function:
   4. Select a simulator/plug your iphon as your simulator destination.
   5. Click the Launch button to build the project on your destination.
 # Version Control
-  v2-2-1 Update informatio button in GuestView
+  v2.0 Update informatio button in GuestView
   
-  v2-2-2 Replace WKWebView with Youtube library
+  v2.1 Replace WKWebView with Youtube library
   
-  v2-2-3 Create Recipe search Section
+  v2.2 Create Recipe search Section
   
-  v2-2-4 Default report section
+  v2.3 Default report section
   
-  v3-1-1 Report section completed
+  v3.0 Report section completed
   
-  v3-1-2 UI design changed.
+  v3.1 UI design changed.
   
-  v3-1-3 Algoriths for receipts changed
+  v3.2 Algoriths for receipts changed
 
-  v3-1-4 Add Timeout functions for Https response
+  v3.3 Add Timeout functions for Https response
   
-  v3-1-5 UI design improved
+  v3.4 UI design improved
