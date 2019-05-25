@@ -78,3 +78,8 @@ Function:
   v3.3 Add Timeout functions for Https response
   
   v3.4 UI design improved
+# Future feature
+
+  ### 1. Login view and Registration view
+  
+  As we attempt to not r
