@@ -85,3 +85,10 @@ Function:
   As we attempt to not require the user's information at the first stage when we introduce Smartstatis, the Login view and Registration view are not added yet. However, in order to provide the better services to the users, creating a login view and a registration view can be beneficial. In order to integrate the login view and the registration view into the Smartstatis project, the developer must consider how to integrate the new features with the existing function. It is better that the developers integrate the login function and the registration function with the GuestViewController which is the first view representing to the users. Please refer to the following link for more information about GusetViewController.
 
 [GuestViewController](https://github.com/ta9-genx-leader/SmartStatis/blob/master/Final/SmartStatis/SmartStatis/Main/GuestViewController.swift)
+
+### Multiple selection of ingredients to search for recipes video from the food storage
+As the current project simple allows the user to search for recipes by single selection of the particular ingredient, this can be improvded by introducing the functions that the users can select multiple ingredients from their food storage to search for the ideal recipe video so that the users can then gain more ideas on how to consume those ingredients which are about to be expired.
+
+In order to realize this idea, it is better that the developers can integrate the current function located in HomePageController as this is the class which manages the logic for ingredient selection. Please refer to the following link for more information about HomePageController.
+[GuestViewController](https://github.com/ta9-genx-leader/SmartStatis/blob/master/Final/SmartStatis/SmartStatis/Main/HomePageController.swift)
+
