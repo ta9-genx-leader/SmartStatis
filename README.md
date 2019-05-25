@@ -86,9 +86,12 @@ Function:
 
 [GuestViewController](https://github.com/ta9-genx-leader/SmartStatis/blob/master/Final/SmartStatis/SmartStatis/Main/GuestViewController.swift)
 
-### Multiple selection of ingredients to search for recipes video from the food storage
+### 2. Multiple selection of ingredients to search for recipes video from the food storage
 As the current project simple allows the user to search for recipes by single selection of the particular ingredient, this can be improvded by introducing the functions that the users can select multiple ingredients from their food storage to search for the ideal recipe video so that the users can then gain more ideas on how to consume those ingredients which are about to be expired.
 
 In order to realize this idea, it is better that the developers can integrate the current function located in HomePageController as this is the class which manages the logic for ingredient selection. Please refer to the following link for more information about HomePageController.
-[GuestViewController](https://github.com/ta9-genx-leader/SmartStatis/blob/master/Final/SmartStatis/SmartStatis/Main/HomePageController.swift)
+
+In order to realize this idea, it is better that the developers can integrate the current function located in HomePageController as this is the class which manages the logic for ingredient selection. Please refer to the following link for more information about HomePageController.
+
+[HomePageController](https://github.com/ta9-genx-leader/SmartStatis/blob/master/Final/SmartStatis/SmartStatis/Main/HomePageController.swift)
 
