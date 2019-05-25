@@ -12,7 +12,7 @@ Function:
 7. Help users to calculate the amount of money wasted on the expired food.
 8. Search corresponding recipes for the stored food.
 # Iteration function
-Iteration 1: 
+### Iteration 1: 
 
    1-1 Manage food in the current storage (Fridge/Freezer/Pantry).
   
@@ -25,14 +25,14 @@ Iteration 1:
    1-5 Notify the user the condition of stored food and the length of expiry date.
    
   
-Iteration 2:
+### Iteration 2:
 
    2-1 Help the users to manage shopping list.
   
    2-2 Search corresponding recipes for the stored food.
    
   
-Iteration 3:
+### Iteration 3:
 
    3-1 Help the users to calculate the amount of money wasted on the expired food.
    
