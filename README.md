@@ -50,6 +50,8 @@ Iteration 3:
   Xcode/Swift
 # Application System
   IOS
+# Server platform
+  Amazon AWS Lambda function/Amazon AWS API Gateway
 # Database system
   MySQL
 # Installation 
