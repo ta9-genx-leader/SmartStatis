@@ -82,4 +82,4 @@ Function:
 
   ### 1. Login view and Registration view
   
-  As we attempt to not r
+  As we attempt to not require the user's information 
